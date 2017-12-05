@@ -1,0 +1,91 @@
+.footer {
+   order: 2;
+   align-self: flex-end;
+   width: 100%;
+   /* Set the fixed height of the footer here */
+   height: 205px;
+   color: white;
+   background-color: #555;
+   text-align: center;
+
+}
+
+.containerfooter{
+    padding-bottom: 0px;
+}
+
+.all-footer{
+    background-color: #555;
+}
+
+footer h3{
+    font-weight:lighter;
+}
+footer ul{
+    padding-left:5px;
+    list-style:none;
+}
+footer p{
+    text-align : justify;
+    font-size : 12px;
+}
+footer iframe {
+    width:100%;
+    position:relative;
+    height:140px;
+     background-color: #555;
+
+}
+.sm{
+    list-style:none;
+    overflow:auto;
+}
+.sm li {
+    display: inline;
+    padding:5px;
+    float:left;
+}
+.sm li a img {
+    width:32px;
+
+      background-color: #555;
+      color: white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      text-align: center;
+  }
+
+  .album {
+   // min-height: 50rem; /* Can be removed; just added for demo purposes */
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #f7f7f7;
+  }
+
+  .card {
+    float: left;
+    width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+  }
+
+  .card > img {
+    margin-bottom: .75rem;
+  }
+
+  .card-text {
+    font-size: 85%;
+    word-wrap: break-word;
+       width: calc(100% - 60px);
+  }
+
+img {
+     width: calc(100% - 60px);
+      height: calc(100% - 60px);
+
+
+}

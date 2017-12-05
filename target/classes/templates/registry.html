@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/registryPage.css}" />
+    <link rel="stylesheet" th:href="@{/footerPage.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Rejestracja</title>
+</head>
+<body>
+<div th:replace="header :: header">
+
+</div>
+    <div class="flexbox">
+        <div class="container">
+
+
+            <form class="form-signin" method="post">
+                <h2 class="form-signin-heading">Zarejestruj się.</h2>
+                <h2 data-th-text="${isMail}">this gets replaced</h2>
+                <label for="firstName" class="sr-only">Imie:</label>
+                <input type="text" id="firstName" class="form-control" name="firstName"
+                       placeholder="Imie" th:required="required"></input>
+
+                <label for="lastName" class="sr-only">Nazwisko:</label>
+                <input type="text" id="lastName" class="form-control" name="lastName"
+                       placeholder="Nazwisko" th:required="required"></input>
+
+                <label for="city" class="sr-only">Miasto:</label>
+                <input type="text" id="city" class="form-control" name="city"
+                       placeholder="Miasto" th:required="required"></input>
+
+                <label for="address" class="sr-only">Adres:</label>
+                <input type="text" id="address" class="form-control" name="address"
+                       placeholder="Adres" th:required="required"></input>
+
+                <label for="postCode" class="sr-only">Kod pocztowy:</label>
+                <input type="text" id="postCode" class="form-control" name="postCode"
+                       placeholder="Kod pocztowy - __-___" th:required="required"></input>
+
+                <label for="phoneNumber" class="sr-only">Numer telefonu:</label>
+                <input type="number" id="phoneNumber" class="form-control" name="phoneNumber"
+                       placeholder="Numer telefonu" th:required="required"></input>
+
+                <label for="email" class="sr-only">Email:</label>
+                <input type="email" id="email" class="form-control" name="email"
+                       placeholder="E-mail" th:required="required"></input>
+
+                <label for="password" class="sr-only">Hasło:</label>
+                <input type="password" id="password" class="form-control" name="password"
+                       placeholder="Hasło" th:required="required"></input>
+
+                <button class="btn btn-lg btn-dark btn-block" type="submit">Zarejestruj</button>
+            </form>
+
+
+
+        </div> <!-- /container -->
+
+        <div th:replace="footer :: footer">
+        </div>
+    </div>
+
+</body>
+</html>
