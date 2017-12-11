@@ -4,7 +4,8 @@ package application.controller;
 import application.model.UserAccount;
 
 import application.model.UserProfile;
-import application.service.UserRegistrationService;
+import application.service.UserAccountService;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import java.util.Map;
 public class RegistrationController {
 
     @Autowired
-    private UserRegistrationService userRegistrationServ;
+    private UserAccountService userAccountServ;
 
 
     @Autowired
@@ -37,24 +38,33 @@ public class RegistrationController {
     }
 
     @RequestMapping(method = {RequestMethod.POST})
-    public String submit(UserAccount userAcc, UserProfile userProf, Map<String,Object> model) {
+    public String submit(UserAccount userAcc, UserProfile userProf, Map<String,Object> model,
+    HttpServletRequest request) {
 
         model.put("isMail","");
-        UserAccount userToSave = null;
-        if (userRegistrationServ.isMailUsed(userAcc) == true) {
+        model.put("registerMessage","");
+        userAcc.setUserProf(userProf);
 
-            System.out.println("mail został użyty");
-            model.put("isMail","Mail został użyty");
+        if (userAccountServ.isMailUsed(userAcc) == true) {
+
+            model.put("isMail","Konto dla podanego e-maila już istnieje");
             return "/registry";
 
         } else {
 
-            userToSave = userAcc;
-            userToSave.setUserProf(userProf);
 
-            userRegistrationServ.saveUserAccount(userToSave);
+            String message;
+            message = userAccountServ.addUser(userAcc, request.getParameter("password1"));
 
-            return "redirect:/";
+            if(message.equals("registrationGood")) return "redirect:/";
+
+            if(message.equals("noMatchPasswords")){
+                model.put("registerMessage", "Błędne powtórzenie hasła");
+                return "/registry";
+            }
+
+
+            return "/registry";
         }
 
 //

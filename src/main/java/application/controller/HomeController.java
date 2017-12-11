@@ -21,21 +21,24 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET})
     public String logout() {
 
         session.invalidate();
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/registry", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/registry", method = {RequestMethod.GET})
     public String registry() {
         return "registry";
     }
+
+    @RequestMapping(value = "/account", method = {RequestMethod.GET})
+    public String account() {return "account"; }
 
 }

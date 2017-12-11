@@ -44,20 +44,20 @@ public class LoginController {
             userAcc = userAccountServ.getUser(account.getEmail());
 
 
-        if(message.equals("zalogowano")){
+        if(message.equals("logged")){
 
             System.out.println(userAcc.userProf.getFirstName());
-            session.setAttribute("userWelcome", "Witaj " + userAcc.userProf.getFirstName() + "");
+            //session.setAttribute("userWelcome", "Witaj " + userAcc.userProf.getFirstName() + "");
             session.setAttribute("loggedUser", userAcc);
 
             return "redirect:/";
             //return "/login";
         }
-        if(message.equals("niezalogowano")){
+        if(message.equals("notlogged")){
             model.put("loginFailureMessage","Niezalogowano, hasło jest błędne");
             return "/login";
         }
-        if(message.equals("brak podanego email")){
+        if(message.equals("noAccountWithThisEmail")){
             model.put("loginFailureMessage","Niezalogowano, brak konta o podanym adresie E-mail");
             return "/login";
         }
