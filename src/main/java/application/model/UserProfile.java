@@ -30,21 +30,24 @@ public class UserProfile {
 
     String phoneNumber;
 
-    public UserProfile() {};
+
+    boolean isWorker;
+
+    public UserProfile() {}
 
     public UserProfile(long id) {
         this.id = id;
     }
 
-    public UserProfile(String firstName, String lastName, String address, String city, String postCode, String phoneNumber) {
+    public UserProfile(long id, String firstName, String lastName, String address, String city, String postCode, String phoneNumber, boolean isWorker) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.postCode = postCode;
         this.phoneNumber = phoneNumber;
-
-
+        this.isWorker = isWorker;
     }
 
     public long getId() {
@@ -101,5 +104,13 @@ public class UserProfile {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean getWorker() {
+        return isWorker;
+    }
+
+    public void setWorker(boolean worker) {
+        isWorker = worker;
     }
 }

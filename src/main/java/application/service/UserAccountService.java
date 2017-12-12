@@ -26,7 +26,10 @@ public class UserAccountService {
 
             UserAccount userAcc = userAccountRepo.findOneByEmail(email);
             if (userAcc.getPassword().equals(password)) {
-                return "logged";
+
+                if(userAcc.getUserProf().getWorker() == true) return "workerlogged";
+                else return "logged";
+
             } else {
                 return "notlogged";
             }

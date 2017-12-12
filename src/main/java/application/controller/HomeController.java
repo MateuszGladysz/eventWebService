@@ -1,6 +1,8 @@
 package application.controller;
 
 
+import application.model.UserAccount;
+import application.service.EventAndPlacesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +18,17 @@ public class HomeController {
     @Autowired
     private HttpSession session;
 
+    @Autowired
+    EventAndPlacesService eventAndPlacesServ;
+
     @RequestMapping(method= RequestMethod.GET)
     public String home(){
+
+        UserAccount userAcc = (UserAccount)session.getAttribute("loggedUser");
+
+        if(userAcc != null && userAcc.getUserProf().getWorker() == true){
+            return "workerPanel";
+        }
         return "home";
     }
 
@@ -40,5 +51,17 @@ public class HomeController {
 
     @RequestMapping(value = "/account", method = {RequestMethod.GET})
     public String account() {return "account"; }
+
+    @RequestMapping(value = "/workerPanel", method = {RequestMethod.GET})
+    public String workerPanel() {return "/workerPanel"; }
+
+    @RequestMapping(value = "/event", method = RequestMethod.GET)
+    public String event() {
+
+        session.setAttribute("events",eventAndPlacesServ.getAllEvents());
+
+        return "event";
+    }
+
 
 }

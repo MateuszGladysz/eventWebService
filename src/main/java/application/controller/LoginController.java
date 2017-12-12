@@ -21,17 +21,18 @@ public class LoginController {
     @Autowired
     private HttpSession session;
 
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET})
     public String logout() {
 
         session.invalidate();
         return "redirect:/";
     }
+
 
     @RequestMapping(method = RequestMethod.POST)
     public String submit(UserAccount account, Map<String,Object> model) {
@@ -44,14 +45,16 @@ public class LoginController {
             userAcc = userAccountServ.getUser(account.getEmail());
 
 
-        if(message.equals("logged")){
+        if(message.equals("workerlogged")){
 
-            System.out.println(userAcc.userProf.getFirstName());
-            //session.setAttribute("userWelcome", "Witaj " + userAcc.userProf.getFirstName() + "");
+            System.out.println("Worker zalogowany");
+            userAcc.getUserProf().setWorker(true);
             session.setAttribute("loggedUser", userAcc);
-
+            return "/workerPanel";
+        }
+        if(message.equals("logged")){
+            session.setAttribute("loggedUser", userAcc);
             return "redirect:/";
-            //return "/login";
         }
         if(message.equals("notlogged")){
             model.put("loginFailureMessage","Niezalogowano, hasło jest błędne");
