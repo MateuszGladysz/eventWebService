@@ -1,8 +1,23 @@
 
-
+img{
+        width:500px;
+}
 .flexbox{
 
         display : flex;
         flex-direction: column;
         justify-content:space-between;
+}
+
+
+
+.item{
+
+        width: 100%;
+        height: 100%;
+}
+
+.carousel-inner{
+
+        height: 500px;
 }

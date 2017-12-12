@@ -27,13 +27,13 @@
 
                 <h5 data-th-text="${loginFailureMessage}" style="color : red"></h5>
 
-                <label for="email" class="sr-only">Email:</label>
+                <h4><label for="email" class="label label-default">Email:</label></h4>
                 <input type="email" id="email" class="form-control" name="email"
-                       placeholder="E-mail" th:required="required"></input>
+                        th:required="required"></input>
 
-                <label for="password" class="sr-only">Hasło:</label>
+                <h4><label for="password"  class="label label-default">Hasło:</label></h4>
                 <input type="password" id="password" class="form-control" name="password"
-                       placeholder="Hasło" th:required="required"></input>
+                        th:required="required"></input>
 
                 <button class="btn btn-lg btn-dark btn-block" type="submit">Zaloguj</button>
                 <h4>Nie masz konta ?</h4>

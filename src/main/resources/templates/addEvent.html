@@ -1,10 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/addEventPage.css}" />
+    <link rel="stylesheet" th:href="@{/footerPage.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Dodaj wydarzenie</title>
+
 </head>
 <body>
-$END$
+
+<div th:replace="header :: header">
+
+</div>
+<div class="flexboxAddEvent">
+    <div class="container">
+        <h2 class="form-signin-heading">Dodaj wydarzenie</h2>
+
+        <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data" action="addEvent">
+
+            <div class="container1">
+
+                <h5 data-th-text="${addingEventFailureMessage}" style="color : red"></h5>
+
+                <h3><label for="eventType" class="label label-default">Typ wydarzenia</label></h3>
+                <input type="text" id="eventType" class="form-control" name="eventType"
+                       placeholder="Typ wydarzenia" th:required="required"></input>
+
+                <h3><label for="eventName" class="label label-default" >Nazwa wydarzenia</label></h3>
+                <input type="text" id="eventName" class="form-control" name="eventName"
+                       placeholder="Nazwa wydarzenia" th:required="required"></input>
+
+                <h3><label for="eventDescription" class="label label-default">Opis</label></h3>
+                <input type="text" id="eventDescription" class="form-control" name="eventDescription"
+                       placeholder="Opis wydarzenia" th:required="required"></input>
+
+                <h3><label for="eventPhotoFile" class="label label-default">Zdjęcie</label></h3>
+                <input type="file" id="eventPhotoFile" class="form-control" name="eventPhotoFile"
+                       placeholder="Zdjęcie wydarzenia" th:required="required"></input>
+            </div>
+
+
+            <div class="container2">
+                <h3><label for="eventAddress" class="label label-default">Adres</label></h3>
+                <input type="text" id="eventAddress" class="form-control" name="eventAddress"
+                       placeholder="Adres wydarzenia" th:required="required"></input>
+
+                <h3><label for="eventCity" class="label label-default">Miasto</label></h3>
+                <input type="text" id="eventCity" class="form-control" name="eventCity"
+                       placeholder="Miasto wydarzenia" th:required="required"></input>
+
+                <h3><label for="eventDate" class="label label-default">Data</label></h3>
+                <input type="date" id="eventDate" class="form-control" name="eventDate"
+                       placeholder="Data wydarzenia" th:required="required"></input>
+            </div>
+
+
+            <div class="container3">
+                <h3><label for="ticketAmount" class="label label-default">Ilość biletów</label></h3>
+                <input type="number" id="ticketAmount" class="form-control" name="ticketAmount"
+                       placeholder="Ilość biletów" th:required="required"></input>
+
+                <h3><label for="ticketNormalPrice" class="label label-default">Cena normalnych</label></h3>
+                <input type="number" min="0.00" max="10000.00" step="0.01" id="ticketNormalPrice"
+                       class="form-control" name="ticketNormalPrice"
+                       placeholder="Cena biletów normalnych" th:required="required"></input>
+
+                <h3><label for="ticketConcessionPrice" class="label label-default">Cena ulgowych</label></h3>
+                <input type="number" min="0.00" max="10000.00" step="0.01"
+                       id="ticketConcessionPrice" class="form-control" name="ticketConcessionPrice"
+                       placeholder="Cena biletów ulgowych" th:required="required"></input>
+            </div>
+
+
+            <div class="conatainerButton">
+                <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj wydarzenie</button>
+            </div>
+
+
+        </form>
+
+
+    </div> <!-- /container -->
+
+    <div th:replace="footer :: footer">
+    </div>
+</div>
 </body>
 </html>
