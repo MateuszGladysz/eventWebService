@@ -21,8 +21,9 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Wydarzenia<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/event">Festivale</a></li>
-                    <li><a href="#">Koncerty</a></li>
+                    <li><a th:href="@{/event/{type}(type='festival')}">Festivale</a></li>
+                    <li><a th:href="@{/event/{type}(type='concert')}">Koncerty</a></li>
+
                 </ul>
             </li>
             <li><a href="#">Restauracje</a></li>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -29,8 +29,11 @@
                 <h5 data-th-text="${addingEventFailureMessage}" style="color : red"></h5>
 
                 <h3><label for="eventType" class="label label-default">Typ wydarzenia</label></h3>
-                <input type="text" id="eventType" class="form-control" name="eventType"
-                       placeholder="Typ wydarzenia" th:required="required"></input>
+                <select type="text" id="eventType" class="form-control" name="eventType"
+                       placeholder="Typ wydarzenia" th:required="required">
+                        <option value="festival">Festiwal</option>
+                        <option value="concert">Koncert</option>
+                </select>
 
                 <h3><label for="eventName" class="label label-default" >Nazwa wydarzenia</label></h3>
                 <input type="text" id="eventName" class="form-control" name="eventName"

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -54,6 +55,12 @@ public class LoginController {
         }
         if(message.equals("logged")){
             session.setAttribute("loggedUser", userAcc);
+
+            if(session.getAttribute("buyTicketFailureMessage") != null){
+
+                return "redirect:" + session.getAttribute("previousPageUrl") ;
+            }
+
             return "redirect:/";
         }
         if(message.equals("notlogged")){
