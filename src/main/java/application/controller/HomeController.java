@@ -3,6 +3,7 @@ package application.controller;
 
 import application.model.UserAccount;
 import application.service.EventAndPlacesService;
+import application.service.TicketsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,9 @@ public class HomeController {
 
     @Autowired
     EventAndPlacesService eventAndPlacesServ;
+
+    @Autowired
+    TicketsService ticketsServ;
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(){
@@ -62,6 +66,15 @@ public class HomeController {
         session.setAttribute("events",eventAndPlacesServ.getAllEventsByType(type));
 
         return "event";
+    }
+
+    @RequestMapping(value = "/myTickets", method = {RequestMethod.GET})
+    public String myTickets() {
+
+        UserAccount userAcc = (UserAccount) session.getAttribute("loggedUser");
+        session.setAttribute("userTickets",ticketsServ.getTicketByOwnerId(userAcc.getId()));
+        return "myTickets";
+
     }
 
 

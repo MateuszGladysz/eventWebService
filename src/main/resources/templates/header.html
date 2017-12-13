@@ -36,6 +36,8 @@
                 <a href=""><span class="glyphicon glyphicon-heart-empty" style="color: white">.Witaj-<span data-th-text="${session.loggedUser.getUserProf().getFirstName()}"></span></span></a>
             </li>
 
+            <li th:if ="${session.loggedUser} != null"><a href="/myTickets"><span class="glyphicon glyphicon-modal-window"></span> Moje bilety</a></li>
+
             <li th:if ="${session.loggedUser} != null"><a href="/account"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
             <li th:unless ="${session.loggedUser}  != null"><a href="/registry"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>
             <li th:if ="${session.loggedUser} != null"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
