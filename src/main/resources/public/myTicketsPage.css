@@ -1,6 +1,42 @@
+.oneTicket{
+
+    background-color: lightgrey;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+
 
 .imageTicket{
 
     width: 420px;
+    height: 300px;
+    margin-left: 15px;
+    margin-top: 15px;
+
+}
+
+.innerTicket{
+
+    display:flex;
+    height: 320px;
+}
+.infoTicket{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.dataTicket{
+
+    padding-top: 15px;
+    padding-right: 10px;
+    margin: 10px;
+    margin-left: 0px;
 
 }

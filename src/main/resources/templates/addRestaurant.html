@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/addRestaurantPage.css}" />
+    <link rel="stylesheet" th:href="@{/footerPage.css}" />
+    <link rel="stylesheet" th:href="@{/headerPage.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Dodaj restauracje</title>
+
+</head>
+<body>
+
+<div th:replace="header :: header">
+
+</div>
+<div class="flexboxAddEvent">
+    <div class="container">
+        <h2 class="form-signin-heading">Dodaj restauracje</h2>
+
+        <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data" action="addRestaurant">
+
+            <div class="container1">
+
+                <h5 data-th-text="${addingRestaurantFailureMessage}" style="color : red"></h5>
+
+                <h3><label for="restaurantName" class="label label-default" >Nazwa restauracji</label></h3>
+                <input type="text" id="restaurantName" class="form-control" name="restaurantName"
+                        th:required="required"></input>
+
+                <h3><label for="restaurantDescription" class="label label-default">Opis</label></h3>
+                <input type="text" id="restaurantDescription" class="form-control" name="restaurantDescription"
+                        th:required="required"></input>
+
+                <h3><label for="restaurantPhotoFile" class="label label-default">Zdjęcie</label></h3>
+                <input type="file" id="restaurantPhotoFile" class="form-control" name="restaurantPhotoFile"
+                        th:required="required"></input>
+            </div>
+
+
+            <div class="container2">
+                <h3><label for="restaurantAddress" class="label label-default">Adres</label></h3>
+                <input type="text" id="restaurantAddress" class="form-control" name="restaurantAddress"
+                        th:required="required"></input>
+
+                <h3><label for="restaurantCity" class="label label-default">Miasto</label></h3>
+                <input type="text" id="restaurantCity" class="form-control" name="restaurantCity"
+                        th:required="required"></input>
+
+            </div>
+
+
+
+            <div class="conatainerButton">
+                <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj restauracje</button>
+            </div>
+
+
+        </form>
+
+
+    </div> <!-- /container -->
+
+    <div th:replace="footer :: footer">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.mainPanelHeader{
+
+    padding: 40px;
+    background-color: lightgrey;
+    font-size: xx-large;
+}
+
+
+
+.mainPanel{
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #191615;
+    width: 900px;
+    height: 500px;
+    padding: 100px;
+
+}
+
+.addEvent{
+    margin: 30px;
+    margin-left: 50px;
+    width: 250px;
+}
+
+.addHotel{
+     margin: 30px;
+     margin-left: 50px;
+    width: 250px;
+}
+
+.addAttraction{
+     margin: 30px;
+    margin-right: 50px;
+    width: 250px;
+}
+
+.addRestaurant{
+
+     margin: 30px;
+     margin-right: 50px;
+    width: 250px;
+}

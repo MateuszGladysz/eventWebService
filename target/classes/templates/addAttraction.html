@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/addHotelPage.css}" />
+    <link rel="stylesheet" th:href="@{/footerPage.css}" />
+    <link rel="stylesheet" th:href="@{/headerPage.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Dodaj atrakcje</title>
+
+</head>
+<body>
+
+<div th:replace="header :: header">
+
+</div>
+<div class="flexboxAddEvent">
+    <div class="container">
+        <h2 class="form-signin-heading">Dodaj atrakcje</h2>
+
+        <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data" action="addAttraction">
+
+            <div class="container1">
+
+                <h5 data-th-text="${addingAttractionFailureMessage}" style="color : red"></h5>
+
+                <h3><label for="attractionName" class="label label-default" >Nazwa atrakcji</label></h3>
+                <input type="text" id="attractionName" class="form-control" name="attractionName"
+                       th:required="required"></input>
+
+                <h3><label for="attractionDescription" class="label label-default">Opis</label></h3>
+                <input type="text" id="attractionDescription" class="form-control" name="attractionDescription "
+                       th:required="required"></input>
+
+                <h3><label for="attractionPhotoFile" class="label label-default">Zdjęcie</label></h3>
+                <input type="file" id="attractionPhotoFile" class="form-control" name="attractionPhotoFile"
+                       th:required="required"></input>
+            </div>
+
+
+            <div class="container2">
+                <h3><label for="attractionAddress" class="label label-default">Adres</label></h3>
+                <input type="text" id="attractionAddress" class="form-control" name="attractionAddress"
+                       th:required="required"></input>
+
+                <h3><label for="attractionCity" class="label label-default">Miasto</label></h3>
+                <input type="text" id="attractionCity" class="form-control" name="attractionCity"
+                       th:required="required"></input>
+
+                <h3><label for="attractionPriceList" class="label label-default">Cennik</label></h3>
+                <input type="text" id="attractionPriceList" class="form-control" name="attractionPriceList"
+                       th:required="required"></input>
+
+            </div>
+
+
+
+            <div class="conatainerButton">
+                <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj atrakcje</button>
+            </div>
+
+
+        </form>
+
+
+    </div> <!-- /container -->
+
+    <div th:replace="footer :: footer">
+    </div>
+</div>
+</body>
+</html>

@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/workerPanelPage.css}" />
     <link rel="stylesheet" th:href="@{/footerPage.css}" />
     <link rel="stylesheet" th:href="@{/headerPage.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -19,16 +20,40 @@
 </div>
 <div class="flexbox">
 
+    <div class="container-fluid">
 
-    <a href="workerPanel/addEvent" style="color : black">
-        <button class="btn btn-lg btn-dark btn-block" type="button">Dodaj wydarzenie</button>
-    </a>
+        <div class="mainPanelHeader" data-th-text="@{Panel dodawnia treści serwisu}">
+
+        </div>
+        <div class="mainPanel">
+            <div class="addEvent">
+                <a href="workerPanel/addEvent" style="color : black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Dodaj wydarzenie</button>
+                </a>
+            </div>
+            <div class="addRestaurant">
+                <a href="workerPanel/addRestaurant" style="color : black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Dodaj restauracje</button>
+                </a>
+            </div>
+            <div class="addHotel">
+                <a href="workerPanel/addHotel" style="color : black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Dodaj hotel</button>
+                </a>
+            </div>
+            <div class="addAttraction">
+                <a href="workerPanel/addAttraction" style="color : black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Dodaj atrakcje</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
 
     <div th:replace="footer :: footer">
     </div>
 </div>
-
-
 
 
 </body>

@@ -28,46 +28,80 @@
 
             <div class="oneTicket" th:each="ticket: ${session.userTickets}">
 
-                <div class="imageTicket">
-                    <img class="image" th:src="@{${'/images/eventsPictures/'+ticket.getEvent().getEventPhoto()}}" alt="Card image cap" />
+                <div class="innerTicket">
+                    <div class="imageTicket">
+                        <img class="image" th:src="@{${'/images/eventsPictures/'+ticket.getEvent().getEventPhoto()}}" alt="Card image cap" />
+                    </div>
+
+                    <div class="dataTicket">
+
+                        <div class="idTicket"
+                             data-th-text="@{${'Id biletu: ' +ticket.id}}">
+                        </div>
+
+                        <div th:if ="${ticket.ticketType} == 'normal'" class="typeTicket"
+                             data-th-text="@{Typ biletu: Normalny }">
+                        </div>
+                        <div th:unless ="${ticket.ticketType} == 'normal'" class="typeTicket"
+                             data-th-text="@{Typ biletu: Ulgowy }">
+                        </div>
+                        <div th:if ="${ticket.ticketType} == 'normal'" class="oneTicketPrice"
+                             data-th-text="@{${'Cena pojedynczego: ' +ticket.getEvent().getTicketNormalPrice()}}">
+                        </div>
+                        <div th:unless ="${ticket.ticketType} == 'normal'" class="oneTicketPrice"
+                             data-th-text="@{${'Cena pojedynczego: ' +ticket.getEvent().getTicketConcessionPrice()}}">
+                        </div>
+
+                        <div class="amountTicket"
+                             data-th-text="@{${'Ilość sztuk: ' +ticket.ticketAmount}}">
+                        </div>
+
+                        <div class="allTicketPrice"
+                             data-th-text="@{${'Całkowita cena: ' +ticket.ticketPrice}}">
+                        </div>
+                    </div>
                 </div>
+
 
                 <div class="infoTicket">
 
                     <div class="eventTicket">
 
-                        <div class="nameEvent">
-                            <h3 data-th-text="${ticket.getEvent().getEventName()}"></h3>
+                        <h3>Dane wydarzenia:</h3>
+                        <div class="nameEvent"
+                             data-th-text="${ticket.getEvent().getEventName()}">
                         </div>
 
-                        <div class="dateEvent">
-                            <h4  data-th-text="${ticket.getEvent().getEventDate()}"></h4>
+                        <div class="dateEvent"
+                              data-th-text="@{${'Data:' +  ticket.getEvent().getEventDate()}}">
                         </div>
 
-                        <div class="addressEvent">
-                            <h4  data-th-text="${ticket.getEvent().getEventAddress()}"></h4>
+                        <div class="addressEvent"
+                              data-th-text="@{ ${'Adres: '+ticket.getEvent().getEventAddress()}}">
                         </div>
 
-                        <div class="cityEvent">
-                            <h4  data-th-text="${ticket.getEvent().getEventCity()}"></h4>
+                        <div class="cityEvent"
+                              data-th-text="@{${'Miasto: ' + ticket.getEvent().getEventCity()}}">
                         </div>
 
                     </div>
 
                     <div class="eventOwner">
 
-                        <div class="nameOwner">
-                            <h3 data-th-text="@{${ticket.getUserAcc().getUserProf().getFirstName()}
-                                    + ' ' + ${ticket.getUserAcc().getUserProf().getLastName()}} "></h3>
+                        <h3>Dane posiadacza: </h3>
+                        <div class="nameOwner"
+                             data-th-text="@{${ticket.getUserAcc().getUserProf().getFirstName()}
+                                    + ' ' + ${ticket.getUserAcc().getUserProf().getLastName()}} ">
                         </div>
 
-                        <div class="phoneOwner">
-                            <h3 data-th-text="${ticket.getUserAcc().getUserProf().getPhoneNumber()}"></h3>
+                        <div class="phoneOwner"
+                             data-th-text="@{${'Telefon: ' +ticket.getUserAcc().getUserProf().getPhoneNumber()}}">
                         </div>
 
                     </div>
 
                 </div>
+
 
             </div>
 

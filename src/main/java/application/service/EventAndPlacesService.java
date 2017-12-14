@@ -1,10 +1,7 @@
 package application.service;
 
-import application.model.Event;
-import application.model.Ticket;
-import application.model.UserAccount;
-import application.repository.EventRepository;
-import application.repository.TicketRepository;
+import application.model.*;
+import application.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +24,16 @@ public class EventAndPlacesService {
     @Autowired
     TicketRepository ticketRepo;
 
+    @Autowired
+    RestaurantRepository restaurantRepo ;
+
+    @Autowired
+    HotelRepository hotelRepo ;
+
+    @Autowired
+    AttractionRepository attractionRepo;
+
+
     public void addEvent(Event event, MultipartFile photo) throws IOException {
 
         event.setEventPhoto(event.getEventName() + ".jpg");
@@ -34,6 +41,36 @@ public class EventAndPlacesService {
         String destination = "C:\\Users\\mateuszg\\IdeaProjects\\eventswebservice\\src\\main" +
                 "\\resources\\public\\images\\eventsPictures\\"
                 + savedEvent.getEventName() + ".jpg";
+        photo.transferTo(new File(destination));
+    }
+
+    public void addRestaurant(Restaurant restaurant, MultipartFile photo) throws IOException {
+
+        restaurant.setRestaurantPhoto(restaurant.getRestaurantName() + ".jpg");
+        Restaurant savedRestaurant = this.restaurantRepo.save(restaurant);
+        String destination = "C:\\Users\\mateuszg\\IdeaProjects\\eventswebservice\\src\\main" +
+                "\\resources\\public\\images\\restaurantsPictures\\"
+                + savedRestaurant.getId() + ".jpg";
+        photo.transferTo(new File(destination));
+    }
+
+    public void addHotel(Hotel hotel, MultipartFile photo) throws IOException {
+
+        hotel.setHotelPhoto(hotel.getHotelName() + ".jpg");
+        Hotel savedHotel = this.hotelRepo.save(hotel);
+        String destination = "C:\\Users\\mateuszg\\IdeaProjects\\eventswebservice\\src\\main" +
+                "\\resources\\public\\images\\hotelsPictures\\"
+                + savedHotel.getId() + ".jpg";
+        photo.transferTo(new File(destination));
+    }
+
+    public void addAttraction(Attraction attraction, MultipartFile photo) throws IOException {
+
+        attraction.setAttractionPhoto(attraction.getAttractionName() + ".jpg");
+        Attraction savedAttraction = this.attractionRepo.save(attraction);
+        String destination = "C:\\Users\\mateuszg\\IdeaProjects\\eventswebservice\\src\\main" +
+                "\\resources\\public\\images\\attractionsPictures\\"
+                + savedAttraction.getId() + ".jpg";
         photo.transferTo(new File(destination));
     }
 
