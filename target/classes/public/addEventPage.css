@@ -4,12 +4,48 @@ body {
 }
 
 .container{
+
     order = 1;
+
+    margin: 10px;
     padding-bottom:200px;
 }
 
+.container1{
+
+  order: 1;
+  margin: 10px;
+  width: 300px;
+}
+
+.container2{
+
+  order: 2;
+  margin-top: 300px;
+   margin: 10px;
+    width: 300px;
+}
+
+.container3{
+
+  order: 3;
+   margin: 10px;
+    width: 300px;
+}
+
+.conatainerButton{
+
+  order: 4;
+   margin: 10px;
+    width: 300px;
+}
+
 .form-signin {
-  max-width: 330px;
+  display : flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  max-width: 700px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -29,12 +65,12 @@ body {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-signin input[type="text"] {
   margin-bottom: 10px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"] {
+.form-signin input[type="number"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;

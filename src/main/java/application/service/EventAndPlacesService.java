@@ -54,11 +54,14 @@ public class EventAndPlacesService {
 
         Ticket ticket = new Ticket();
 
-        ticket.setEventId(Long.parseLong(eventId));
+        Event event = getOneById(Long.parseLong(eventId));
+
+        ticket.setEvent(event);
+        ticket.setUserAcc(userAcc);
+        ticket.setTicketAmount(Integer.parseInt(ticketAmount));
         ticket.setOwnerId(userAcc.getId());
         ticket.setTicketType(ticketType);
 
-        Event event = getOneById(Long.parseLong(eventId));
 
         if(ticketType.equals("normal")){
             oneTicketPrice = event.getTicketNormalPrice();

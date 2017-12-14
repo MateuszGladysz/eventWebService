@@ -41,6 +41,8 @@ public class RegistrationController {
     public String submit(UserAccount userAcc, UserProfile userProf, Map<String,Object> model,
     HttpServletRequest request) {
 
+
+        System.out.println("imie " + userProf.getFirstName());
         model.put("isMail","");
         model.put("registerMessage","");
         userAcc.setUserProf(userProf);

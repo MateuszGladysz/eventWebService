@@ -16,14 +16,28 @@
         </div>
         <ul class="nav navbar-nav">
 
-            <li th:if ="${session.loggedUser} != null">
-               <a href=""><span class="glyphicon glyphicon-heart-empty" style="color: white">.Witaj-<span data-th-text="${session.loggedUser.getUserProf().getFirstName()}"></span></span></a>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Wydarzenia<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/event/{type}(type='festival')}">Festivale</a></li>
+                    <li><a th:href="@{/event/{type}(type='concert')}">Koncerty</a></li>
+                    <li><a th:href="@{/event/{type}(type='sport')}">Wydarzenia sportowe</a></li>
+                    <li><a th:href="@{/event/{type}(type='other')}">Inne</a></li>
+                </ul>
             </li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Restauracje</a></li>
+            <li><a href="#">Hotele</a></li>
+            <li><a href="#">Atrakcje</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
 
+            <li th:if ="${session.loggedUser} != null">
+                <a href=""><span class="glyphicon glyphicon-heart-empty" style="color: white">.Witaj-<span data-th-text="${session.loggedUser.getUserProf().getFirstName()}"></span></span></a>
+            </li>
+
+            <li th:if ="${session.loggedUser} != null"><a href="/myTickets"><span class="glyphicon glyphicon-modal-window"></span> Moje bilety</a></li>
 
             <li th:if ="${session.loggedUser} != null"><a href="/account"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
             <li th:unless ="${session.loggedUser}  != null"><a href="/registry"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>

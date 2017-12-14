@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta CONTENT="text/html; charset=iso-8859-2"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{/style.css}" />
     <link rel="stylesheet" th:href="@{/registryPage.css}" />
     <link rel="stylesheet" th:href="@{/footerPage.css}" />
+    <link rel="stylesheet" th:href="@{/headerPage.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -26,33 +27,33 @@
 
                         <h2 class="form-signin-heading">Twoje dane personalne</h2>
                         <h5 data-th-text="${isMail}" style="color: red"></h5>
-                        <label for="firstName" class="sr-only">Imie:</label>
+                        <h4><label for="firstName" class="label label-default">Imie:</label></h4>
                         <input type="text" id="firstName" class="form-control" name="firstName"
-                               placeholder="Imie" th:required="required"></input>
+                                th:required="required"></input>
 
-                        <label for="lastName" class="sr-only">Nazwisko:</label>
+                    <h4><label for="lastName" class="label label-default">Nazwisko:</label></h4>
                         <input type="text" id="lastName" class="form-control" name="lastName"
-                               placeholder="Nazwisko" th:required="required"></input>
+                                th:required="required"></input>
 
-                        <label for="address" class="sr-only">Adres:</label>
+                    <h4><label for="address" class="label label-default">Adres:</label></h4>
                         <input type="text" id="address" class="form-control" name="address"
-                               placeholder="Adres" th:required="required"></input>
+                                th:required="required"></input>
 
-                        <label for="postCode" class="sr-only">Kod pocztowy:</label>
+                    <h4><label for="postCode" class="label label-default">Kod pocztowy:</label></h4>
                         <input type="text" id="postCode" class="form-control" name="postCode"
-                               placeholder="Kod pocztowy - __-___" th:required="required"></input>
+                               placeholder="Przykład 10-100" th:required="required"></input>
 
-                        <label for="city" class="sr-only">Miasto:</label>
+                    <h4><label for="city" class="label label-default">Miasto:</label></h4>
                         <input type="text" id="city" class="form-control" name="city"
-                               placeholder="Miasto" th:required="required"></input>
+                                th:required="required"></input>
 
-                        <label for="phoneNumber" class="sr-only">Numer telefonu:</label>
+                    <h4><label for="phoneNumber" class="label label-default">Numer telefonu:</label></h4>
                         <input type="number" id="phoneNumber" class="form-control" name="phoneNumber"
-                               placeholder="Numer telefonu" th:required="required"></input>
+                                th:required="required"></input>
 
-                        <label for="email" class="sr-only">Email:</label>
+                    <h4><label for="email" class="label label-default">Email:</label></h4>
                         <input type="email" id="email" class="form-control" name="email"
-                               placeholder="E-mail" th:required="required"></input>
+                                th:required="required"></input>
                 </div>
 
                 <div class="container2">
@@ -61,13 +62,14 @@
 
                         <h5 data-th-text="${registerMessage}" style="color: red"></h5>
 
-                        <label for="password" class="sr-only">Hasło:</label>
+                    <h4><label for="password" class="label label-default">Hasło:</label></h4>
                         <input type="password" id="password" class="form-control" name="password"
-                               placeholder="Hasło" th:required="required"></input>
+                                th:required="required"></input>
 
-                        <label for="password1" class="sr-only">Powtórz hasło</label>
+                    <h4><label for="password1" class="label label-default">Powtórz hasło</label></h4>
                         <input type="password" id="password1" class="form-control"
-                               name ="password1" placeholder="Powtórz hasło" th:required="required"></input>
+                               name ="password1" th:required="required"></input>
+
                 </div>
 
                 <div class="containerButton">

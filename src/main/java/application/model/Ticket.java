@@ -13,33 +13,32 @@ public class Ticket {
 
     private long ownerId;
 
-    private long eventId;
+    private int ticketAmount = 0;
 
     private String ticketType;
 
     private double ticketPrice = 0;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    public UserAccount userAcc;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    public Event event;
+
     public Ticket() {
     }
 
-    public Ticket(long id, long ownerId, long eventId, String ticketType, double ticketPrice) {
+    public Ticket(long id, int ticketAmount, String ticketType, double ticketPrice, UserAccount userAcc, Event event) {
         this.id = id;
-        this.ownerId = ownerId;
-        this.eventId = eventId;
+        this.ticketAmount = ticketAmount;
         this.ticketType = ticketType;
         this.ticketPrice = ticketPrice;
+        this.userAcc = userAcc;
+        this.event = event;
     }
 
     public long getId() {
         return id;
-    }
-
-    public long getOwnerId() {
-        return ownerId;
-    }
-
-    public long getEventId() {
-        return eventId;
     }
 
     public String getTicketType() {
@@ -50,16 +49,24 @@ public class Ticket {
         return ticketPrice;
     }
 
+    public int getTicketAmount() {
+        return ticketAmount;
+    }
+
+    public UserAccount getUserAcc() {
+        return userAcc;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public long getOwnerId() {
+        return ownerId;
+    }
+
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public void setEventId(long eventId) {
-        this.eventId = eventId;
     }
 
     public void setTicketType(String ticketType) {
@@ -68,5 +75,21 @@ public class Ticket {
 
     public void setTicketPrice(double ticketprice) {
         this.ticketPrice = ticketprice;
+    }
+
+    public void setTicketAmount(int ticketAmount) {
+        this.ticketAmount = ticketAmount;
+    }
+
+    public void setUserAcc(UserAccount userAcc) {
+        this.userAcc = userAcc;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 }
