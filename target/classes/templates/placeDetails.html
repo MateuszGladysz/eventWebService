@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/placeDetailsPage.css}" />
+    <link rel="stylesheet" th:href="@{/footerPage.css}" />
+    <link rel="stylesheet" th:href="@{/headerPage.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Szczegoły miejsca</title>
+
+</head>
+<body>
+
+<div th:replace="header :: header">
+
+</div>
+<div class="flexbox">
+
+
+    <div class="container-fluid1">
+        <h1>Szczegóły miejsca</h1>
+
+        <div th:if="${placeType == 'restaurant'}" class="onePlace" th:each="place: ${session.placeDetails}">
+
+            <div class="imagePlace">
+                <img class="image" th:src="@{${'../../../../images/restaurantsPictures/'+place.id+'.jpg'}}" alt="Card image cap" />
+            </div>
+
+            <div class="contentPlace">
+
+                <div class="namePlace"
+                     data-th-text="${place.restaurantName}">
+                </div>
+
+                <div class="descriptionPlace"
+                      data-th-text="${place.restaurantDescription}">
+                </div>
+
+                <div class="addressPlace"
+                      data-th-text="${place.restaurantAddress}">
+                </div>
+
+                <div class="cityPlace"
+                      data-th-text="${place.restaurantCity}">
+                </div>
+
+            </div>
+
+            <div class="addComment">
+                <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data"
+                      action="/../../../place/addComment/restaurant">
+                    <input type="hidden" id="placeId" name="placeId" th:value="${place.id}"></input>
+                    <h2 class="form-signin-heading">Skomentuj tą restaurację</h2>
+                    <h5 data-th-text="${buyTicketFailureMessage}" style="color : red"></h5>
+                    <div class="addCommentContent">
+
+                        <div class="addCommentContent1">
+                            <h4><label for="rateInComment" class="label label-default">Twoja ocena:</label></h4>
+                            <select type="text" id="rateInComment" class="form-control" name="rateInComment"
+                                    th:required="required">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="addCommentContent2">
+                            <h4><label for="commentContent"  class="label label-default">Komentarz:</label></h4>
+                            <input type="text"
+                                   id="commentContent" class="form-control" name="commentContent"
+                                   th:required="required"></input>
+                        </div>
+
+                        <div class="addCommentButton">
+                            <button class="btn btn-lg btn-dark btn-block" type="submit">Dokonaj komentarz</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div th:if="${placeType == 'hotel'}" class="onePlace" th:each="place: ${session.placeDetails}">
+
+            <div class="imagePlace">
+                <img class="image" th:src="@{${'../../../../images/hotelsPictures/'+place.id+'.jpg'}}" alt="Card image cap" />
+            </div>
+
+            <div class="contentPlace">
+
+                <div class="namePlace"
+                     data-th-text="${place.hotelName}">
+                </div>
+
+                <div class="descriptionPlace"
+                     data-th-text="${place.hotelDescription}">
+                </div>
+
+                <div class="addressPlace"
+                     data-th-text="${place.hotelAddress}">
+                </div>
+
+                <div class="cityPlace"
+                     data-th-text="${place.hotelCity}">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div th:if="${placeType == 'attraction'}" class="onePlace" th:each="place: ${session.placeDetails}">
+
+            <div class="imagePlace">
+                <img class="image" th:src="@{${'../../../../images/attractionsPictures/'+place.id+'.jpg'}}" alt="Card image cap" />
+            </div>
+
+            <div class="contentPlace">
+
+                <div class="namePlace"
+                     data-th-text="${place.attractionName}">
+                </div>
+
+                <div class="descriptionPlace"
+                     data-th-text="${place.attractionDescription}">
+                </div>
+
+                <div class="addressPlace"
+                     data-th-text="${place.attractionAddress}">
+                </div>
+
+                <div class="cityPlace"
+                     data-th-text="${place.attractionCity}">
+                </div>
+
+            </div>
+
+    </div>
+    </div>
+    <div th:replace="footer :: footer">
+    </div>
+</div>
+
+</body>
+</html>

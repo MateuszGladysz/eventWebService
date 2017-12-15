@@ -97,6 +97,40 @@
                 </form>
             </div>
 
+            <div class="addComment">
+                <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data"
+                      action="../../event/addComment">
+                    <input type="hidden" id="commentEventId" name="commentEventId" th:value="${event.id}"></input>
+                    <h2 class="form-signin-heading">Skomentuj to wydarzenie</h2>
+                    <div class="addCommentContent">
+
+                        <div class="addCommentContent1">
+                            <h4><label for="rateInComment" class="label label-default">Twoja ocena:</label></h4>
+                            <select type="text" id="rateInComment" class="form-control" name="rateInComment"
+                                    th:required="required">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="addCommentContent2">
+                            <h4><label for="commentContent"  class="label label-default">Komentarz:</label></h4>
+                            <input type="text"
+                                   id="commentContent" class="form-control" name="commentContent"
+                                   th:required="required"></input>
+                        </div>
+
+                        <div class="addCommentButton">
+                            <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj komentarz</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     </div>
     <div th:replace="footer :: footer">
