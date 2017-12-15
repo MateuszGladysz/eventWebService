@@ -59,6 +59,8 @@
                         <div class="allTicketPrice"
                              data-th-text="@{${'Całkowita cena: ' +ticket.ticketPrice}}">
                         </div>
+
+                        <a th:href="@{/restaurant/{city}(city=${ticket.getEvent().getEventCity()})}">Restauracje</a>
                     </div>
                 </div>
 

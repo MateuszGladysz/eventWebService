@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -59,6 +60,35 @@ public class HomeController {
 
     @RequestMapping(value = "/workerPanel", method = {RequestMethod.GET})
     public String workerPanel() {return "workerPanel"; }
+
+
+    @RequestMapping(value = "/restaurant/{city}", method = {RequestMethod.GET})
+    public String restaurant(@PathVariable String city) {
+
+        System.out.println("city" + city);
+        if(!city.equals("noCity")){
+            session.setAttribute("restaurants",eventAndPlacesServ.getAllRestaurantsByCity(city));
+        }else{
+            session.setAttribute("restaurants",eventAndPlacesServ.getAllRestaurants());
+        }
+
+        return "restaurant";
+    }
+
+
+    @RequestMapping(value = "/hotel", method = {RequestMethod.GET})
+    public String hotel() {
+
+        session.setAttribute("hotels",eventAndPlacesServ.getAllHotels());
+        return "hotel";
+    }
+
+    @RequestMapping(value = "/attraction", method = {RequestMethod.GET})
+    public String attraction() {
+
+        session.setAttribute("attractions",eventAndPlacesServ.getAllAttractions());
+        return "attraction";
+    }
 
     @RequestMapping(value="/event/{type}", method = RequestMethod.GET)
     public String event(@PathVariable String type){

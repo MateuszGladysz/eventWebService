@@ -10,4 +10,6 @@ import java.util.List;
 
 @Transactional
 public interface HotelRepository extends CrudRepository<Hotel, Long> {
+
+    Hotel findOneById(long id);
 }

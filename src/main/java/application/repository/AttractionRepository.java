@@ -9,4 +9,6 @@ import java.util.List;
 
 @Transactional
 public interface AttractionRepository extends CrudRepository<Attraction, Long> {
+
+    Attraction findOneById(long id);
 }

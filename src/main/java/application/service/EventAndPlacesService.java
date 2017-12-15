@@ -33,6 +33,9 @@ public class EventAndPlacesService {
     @Autowired
     AttractionRepository attractionRepo;
 
+    @Autowired
+    CommentRepository commentRepo;
+
 
     public void addEvent(Event event, MultipartFile photo) throws IOException {
 
@@ -74,6 +77,31 @@ public class EventAndPlacesService {
         photo.transferTo(new File(destination));
     }
 
+
+    ///getting one by id
+
+    public Event getOneEventById(long id){return eventRepo.findOneById(id);}
+
+    public Hotel getOneHotelById(long id){return hotelRepo.findOneById(id);}
+
+    public Restaurant getOneRestaurantById(long id){return restaurantRepo.findOneById(id);}
+
+    public Attraction getOneAttractionById(long id){return attractionRepo.findOneById(id);}
+
+    /// end getting one by id
+
+    /// gettin all
+
+    public List<Restaurant> getAllRestaurants(){return (List)this.restaurantRepo.findAll();}
+
+    public List<Hotel> getAllHotels(){return (List)this.hotelRepo.findAll();}
+
+    public List<Attraction> getAllAttractions(){return (List)this.attractionRepo.findAll();}
+
+    //// end getting all
+
+    /// getting all by some restriction
+
     public List<Event> getAllEventsByType(String type){
 
 
@@ -81,8 +109,27 @@ public class EventAndPlacesService {
         return (List)this.eventRepo.findAllByEventType(type);
     }
 
+    public List<Restaurant> getAllRestaurantsByCity(String city){return (List)this.restaurantRepo.findAllByRestaurantCity(city);}
 
-    public Event getOneById(long id){return eventRepo.findOneById(id);}
+    ///end getting all all by some restriction
+
+    ///operations
+
+    public void addComment(UserAccount userAcc, Event event, Restaurant restaurant,
+                           Hotel hotel, Attraction attraction, String rateInComment,
+                           String commentContent){
+
+        Comment comment = new Comment();
+        comment.setEvent(event);
+        comment.setAttraction(attraction);
+        comment.setHotel(hotel);
+        comment.setRestaurant(restaurant);
+
+        comment.setCommentContent(commentContent);
+        comment.setRateInComment(Double.parseDouble(rateInComment));
+
+        commentRepo.save(comment);
+    }
 
     public String buyTicket(UserAccount userAcc,String eventId,
                             String ticketType, String ticketAmount){
@@ -91,7 +138,7 @@ public class EventAndPlacesService {
 
         Ticket ticket = new Ticket();
 
-        Event event = getOneById(Long.parseLong(eventId));
+        Event event = getOneEventById(Long.parseLong(eventId));
 
         ticket.setEvent(event);
         ticket.setUserAcc(userAcc);

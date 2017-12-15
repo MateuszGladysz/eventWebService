@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Event;
 import application.model.UserAccount;
 import application.service.EventAndPlacesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class EventController {
     @RequestMapping(value="/getDetails/{id}", method = RequestMethod.GET)
     public String getEventDetails(@PathVariable String id){
 
-        session.setAttribute("eventDetails",eventAndPlacesServ.getOneById(Long.parseLong(id)));
+        session.setAttribute("eventDetails",eventAndPlacesServ.getOneEventById(Long.parseLong(id)));
 
 
         return "eventDetails";
@@ -52,6 +53,19 @@ public class EventController {
 
         eventAndPlacesServ.buyTicket((UserAccount) session.getAttribute("loggedUser"),
                 eventId, ticketType, ticketAmount);
+
+        return "eventDetails";
+    }
+
+    @RequestMapping(value="/addComment", method = RequestMethod.POST)
+    public String addComment(@RequestParam String commentEventId, @RequestParam String commentContent,
+                             @RequestParam String rateInComment){
+
+        Event event = (Event)eventAndPlacesServ.getOneEventById(Long.parseLong(commentEventId));
+        UserAccount userAcc = (UserAccount) session.getAttribute("loggedUser");
+        eventAndPlacesServ.addComment(userAcc,event,null,null,null,
+                rateInComment,commentContent);
+
 
         return "eventDetails";
     }
