@@ -25,7 +25,7 @@
     <div class="container-fluid1">
         <h1>Szczegóły miejsca</h1>
 
-        <div th:if="${placeType == 'restaurant'}" class="onePlace" th:each="place: ${session.placeDetails}">
+        <div th:if="${session.placeType == 'restaurant'}" class="onePlace" th:each="place: ${session.placeDetails}">
 
             <div class="imagePlace">
                 <img class="image" th:src="@{${'../../../../images/restaurantsPictures/'+place.id+'.jpg'}}" alt="Card image cap" />
@@ -51,44 +51,11 @@
 
             </div>
 
-            <div class="addComment">
-                <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data"
-                      action="/../../../place/addComment/restaurant">
-                    <input type="hidden" id="placeId" name="placeId" th:value="${place.id}"></input>
-                    <h2 class="form-signin-heading">Skomentuj tą restaurację</h2>
-                    <h5 data-th-text="${buyTicketFailureMessage}" style="color : red"></h5>
-                    <div class="addCommentContent">
 
-                        <div class="addCommentContent1">
-                            <h4><label for="rateInComment" class="label label-default">Twoja ocena:</label></h4>
-                            <select type="text" id="rateInComment" class="form-control" name="rateInComment"
-                                    th:required="required">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-
-                        <div class="addCommentContent2">
-                            <h4><label for="commentContent"  class="label label-default">Komentarz:</label></h4>
-                            <input type="text"
-                                   id="commentContent" class="form-control" name="commentContent"
-                                   th:required="required"></input>
-                        </div>
-
-                        <div class="addCommentButton">
-                            <button class="btn btn-lg btn-dark btn-block" type="submit">Dokonaj komentarz</button>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
 
         </div>
 
-        <div th:if="${placeType == 'hotel'}" class="onePlace" th:each="place: ${session.placeDetails}">
+        <div th:if="${session.placeType == 'hotel'}" class="onePlace" th:each="place: ${session.placeDetails}">
 
             <div class="imagePlace">
                 <img class="image" th:src="@{${'../../../../images/hotelsPictures/'+place.id+'.jpg'}}" alt="Card image cap" />
@@ -116,7 +83,7 @@
 
         </div>
 
-        <div th:if="${placeType == 'attraction'}" class="onePlace" th:each="place: ${session.placeDetails}">
+        <div th:if="${session.placeType == 'attraction'}" class="onePlace" th:each="place: ${session.placeDetails}">
 
             <div class="imagePlace">
                 <img class="image" th:src="@{${'../../../../images/attractionsPictures/'+place.id+'.jpg'}}" alt="Card image cap" />
@@ -139,10 +106,60 @@
                 <div class="cityPlace"
                      data-th-text="${place.attractionCity}">
                 </div>
-
             </div>
 
+        </div>
+
+        <div class="addComment" th:if="${session.loggedUser != null}" th:each="place: ${session.placeDetails}">
+            <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data"
+                  th:action="@{/../../../place/addComment/{type}(type=${session.placeType})}">
+                <input type="hidden" id="placeId" name="placeId" th:value="${place.id}"></input>
+                <h2 class="form-signin-heading">Skomentuj to miejsce</h2>
+                <h5 data-th-text="${buyTicketFailureMessage}" style="color : red"></h5>
+                <div class="addCommentContent">
+
+                    <div class="addCommentContent1">
+                        <h4><label for="rateInComment" class="label label-default">Twoja ocena:</label></h4>
+                        <select type="text" id="rateInComment" class="form-control" name="rateInComment"
+                                th:required="required">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="addCommentContent2">
+                        <h4><label for="commentContent"  class="label label-default">Komentarz:</label></h4>
+                        <input type="text"
+                               id="commentContent" class="form-control" name="commentContent"
+                               th:required="required"></input>
+                    </div>
+
+                    <div class="addCommentButton">
+                        <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj komentarz</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
     </div>
+
+    <div class="allComments" th:each="comment: ${session.comments}">
+
+        <div class="commentator"
+             data-th-text="${comment.getUserAcc().getUserProf().getFirstName()}" >
+        </div>
+
+        <div class="commentContent"
+             data-th-text="${comment.commentContent}">
+        </div>
+
+        <div class="commentRate"
+            data-th-text="${comment.rateInComment}" >
+        </div>
+
     </div>
     <div th:replace="footer :: footer">
     </div>

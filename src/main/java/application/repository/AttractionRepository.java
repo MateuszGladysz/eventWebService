@@ -11,4 +11,5 @@ import java.util.List;
 public interface AttractionRepository extends CrudRepository<Attraction, Long> {
 
     Attraction findOneById(long id);
+    List<Attraction> findAllByAttractionCity(String city);
 }

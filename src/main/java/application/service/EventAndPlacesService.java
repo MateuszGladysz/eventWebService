@@ -111,6 +111,10 @@ public class EventAndPlacesService {
 
     public List<Restaurant> getAllRestaurantsByCity(String city){return (List)this.restaurantRepo.findAllByRestaurantCity(city);}
 
+    public List<Hotel> getAllHotelsByCity(String city){return (List)this.hotelRepo.findAllByHotelCity(city);}
+
+    public List<Attraction> getAllAttractionsByCity(String city){return (List)this.attractionRepo.findAllByAttractionCity(city);}
+
     ///end getting all all by some restriction
 
     ///operations
@@ -119,7 +123,34 @@ public class EventAndPlacesService {
                            Hotel hotel, Attraction attraction, String rateInComment,
                            String commentContent){
 
+        if(event != null){
+            List<Comment> eventComments = getAllCommentByTypeAndId(event.getId(),"event");
+
+            event.setEventRate((event.getEventRate()+Long.parseLong(rateInComment))/
+                    (eventComments.size()+1));
+            eventRepo.save(event);
+        }
+        if(hotel != null){
+            List<Comment> hotelComments = getAllCommentByTypeAndId(hotel.getId(),"hotel");
+            hotel.setHotelRate((hotel.getHotelRate()+Long.parseLong(rateInComment))/
+                    (hotelComments.size()+1));
+            hotelRepo.save(hotel);
+        }
+        if(restaurant != null){
+            List<Comment> restaurantComments = getAllCommentByTypeAndId(restaurant.getId(),"restaurant");
+            restaurant.setRestaurantRate((restaurant.getRestaurantRate()+Long.parseLong(rateInComment))/
+                    (restaurantComments.size()+1));
+            restaurantRepo.save(restaurant);
+        }
+        if(attraction != null){
+            List<Comment> attractionComments = getAllCommentByTypeAndId(attraction.getId(),"attraction");
+            attraction.setAttractionRate((attraction.getAttractionRate()+Long.parseLong(rateInComment))/
+                    (attractionComments.size()+1));
+            attractionRepo.save(attraction);
+        }
+
         Comment comment = new Comment();
+        comment.setUserAcc(userAcc);
         comment.setEvent(event);
         comment.setAttraction(attraction);
         comment.setHotel(hotel);
@@ -129,6 +160,26 @@ public class EventAndPlacesService {
         comment.setRateInComment(Double.parseDouble(rateInComment));
 
         commentRepo.save(comment);
+    }
+
+    public List<Comment> getAllCommentByTypeAndId(long id, String type){
+
+        List<Comment> comments = null;
+
+        if(type.equals("event")){
+            comments = commentRepo.findAllByEventId(id);
+        }
+        if(type.equals("restaurant")){
+            comments = commentRepo.findAllByRestaurantId(id);
+        }
+        if(type.equals("hotel")){
+            comments = commentRepo.findAllByHotelId(id);
+        }
+        if(type.equals("attraction")){
+            comments = commentRepo.findAllByAttractionId(id);
+        }
+
+        return comments;
     }
 
     public String buyTicket(UserAccount userAcc,String eventId,

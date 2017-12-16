@@ -31,6 +31,7 @@ public class EventController {
     public String getEventDetails(@PathVariable String id){
 
         session.setAttribute("eventDetails",eventAndPlacesServ.getOneEventById(Long.parseLong(id)));
+        session.setAttribute("comments", eventAndPlacesServ.getAllCommentByTypeAndId(Long.parseLong(id),"event"));
 
 
         return "eventDetails";

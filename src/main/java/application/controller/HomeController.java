@@ -65,7 +65,6 @@ public class HomeController {
     @RequestMapping(value = "/restaurant/{city}", method = {RequestMethod.GET})
     public String restaurant(@PathVariable String city) {
 
-        System.out.println("city" + city);
         if(!city.equals("noCity")){
             session.setAttribute("restaurants",eventAndPlacesServ.getAllRestaurantsByCity(city));
         }else{
@@ -76,17 +75,25 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/hotel", method = {RequestMethod.GET})
-    public String hotel() {
+    @RequestMapping(value = "/hotel/{city}", method = {RequestMethod.GET})
+    public String hotel(@PathVariable String city) {
 
-        session.setAttribute("hotels",eventAndPlacesServ.getAllHotels());
+        if(!city.equals("noCity")){
+            session.setAttribute("hotels",eventAndPlacesServ.getAllRestaurantsByCity(city));
+        }else{
+            session.setAttribute("hotels",eventAndPlacesServ.getAllHotels());
+        }
         return "hotel";
     }
 
-    @RequestMapping(value = "/attraction", method = {RequestMethod.GET})
-    public String attraction() {
+    @RequestMapping(value = "/attraction/{city}", method = {RequestMethod.GET})
+    public String attraction(@PathVariable String city) {
 
-        session.setAttribute("attractions",eventAndPlacesServ.getAllAttractions());
+        if(!city.equals("noCity")){
+            session.setAttribute("attractions",eventAndPlacesServ.getAllAttractionsByCity(city));
+        }else{
+            session.setAttribute("attractions",eventAndPlacesServ.getAllAttractions());
+        }
         return "attraction";
     }
 

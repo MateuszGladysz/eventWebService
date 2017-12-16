@@ -12,4 +12,5 @@ import java.util.List;
 public interface HotelRepository extends CrudRepository<Hotel, Long> {
 
     Hotel findOneById(long id);
+    List<Hotel> findAllByHotelCity(String city);
 }

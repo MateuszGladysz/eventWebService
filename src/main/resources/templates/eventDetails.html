@@ -96,8 +96,10 @@
 
                 </form>
             </div>
-
-            <div class="addComment">
+            <div class="showRestaurants">
+                <a th:href="@{/restaurant/{city}(city=${event.eventCity})}">Pokaż restauracje</a>
+            </div>
+            <div class="addComment" th:if="${session.loggedUser != null}">
                 <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data"
                       action="../../event/addComment">
                     <input type="hidden" id="commentEventId" name="commentEventId" th:value="${event.id}"></input>
@@ -129,6 +131,24 @@
                     </div>
 
                 </form>
+            </div>
+
+
+
+            <div class="allComments" th:each="comment: ${session.comments}">
+
+                <div class="commentator"
+                     data-th-text="${comment.getUserAcc().getUserProf().getFirstName()}" >
+                </div>
+
+                <div class="commentContent"
+                     data-th-text="${comment.commentContent}">
+                </div>
+
+                <div class="commentRate"
+                     data-th-text="${comment.rateInComment}" >
+                </div>
+
             </div>
 
         </div>

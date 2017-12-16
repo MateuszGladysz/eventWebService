@@ -14,4 +14,5 @@ public interface TicketRepository extends CrudRepository<Ticket, Long>{
     List<Ticket> findAllByOwnerId(long ownerId);
 
 
+
 }

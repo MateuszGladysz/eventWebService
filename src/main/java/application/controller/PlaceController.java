@@ -31,21 +31,20 @@ public class PlaceController {
 
 
     @RequestMapping(value="/getDetails/{type}/{id}", method = RequestMethod.GET)
-    public String getEventDetails(@PathVariable String id, @PathVariable String type,
-                                  Map<String,Object> model){
+    public String getEventDetails(@PathVariable String id, @PathVariable String type){
 
-        System.out.println("id:" + id + " type: "+ type);
+        session.setAttribute("comments", eventAndPlacesServ.getAllCommentByTypeAndId(Long.parseLong(id),type));
         if(type.equals("restaurant")){
             session.setAttribute("placeDetails",eventAndPlacesServ.getOneRestaurantById(Long.parseLong(id)));
-            model.put("placeType","restaurant");
+            session.setAttribute("placeType","restaurant");
         }
         if(type.equals("hotel")){
             session.setAttribute("placeDetails",eventAndPlacesServ.getOneHotelById(Long.parseLong(id)));
-            model.put("placeType","hotel");
+            session.setAttribute("placeType","hotel");
 
         }if(type.equals("attraction")){
             session.setAttribute("placeDetails",eventAndPlacesServ.getOneAttractionById(Long.parseLong(id)));
-            model.put("placeType","attraction");
+            session.setAttribute("placeType","attraction");
         }
 
         return "/placeDetails";

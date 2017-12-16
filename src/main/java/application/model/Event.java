@@ -36,22 +36,25 @@ public class Event {
 
     private double ticketConcessionPrice;
 
+    private double eventRate;
+
     private String eventPhoto;
 
     public Event() {
     }
 
-    public Event(long id, String eventName, String eventDescription, String eventDate, int ticketAmount, String eventAdress,
-                 String eventCity, double ticketNormalPrice, double ticketConcessionPrice, String eventPhoto) {
+    public Event(long id, String eventName, String eventDescription, String eventDate, int ticketAmount, String eventAddress, String eventCity, String eventType, double ticketNormalPrice, double ticketConcessionPrice, double eventRate, String eventPhoto) {
         this.id = id;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.eventDate = eventDate;
         this.ticketAmount = ticketAmount;
-        this.eventAddress = eventAdress;
+        this.eventAddress = eventAddress;
         this.eventCity = eventCity;
+        this.eventType = eventType;
         this.ticketNormalPrice = ticketNormalPrice;
         this.ticketConcessionPrice = ticketConcessionPrice;
+        this.eventRate = eventRate;
         this.eventPhoto = eventPhoto;
     }
 
@@ -99,6 +102,10 @@ public class Event {
         return eventType;
     }
 
+    public double getEventRate() {
+        return eventRate;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -141,5 +148,9 @@ public class Event {
 
     public void setEventPhoto(String eventPhoto) {
         this.eventPhoto = eventPhoto;
+    }
+
+    public void setEventRate(double eventRate) {
+        this.eventRate = eventRate;
     }
 }
