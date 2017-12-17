@@ -24,6 +24,9 @@
 
     <div class="container-fluid">
         <h1>Atrakcje</h1>
+        <div class="NoContent" th:if="${session.attractions.isEmpty()}">
+            <h2>Brak atrakcji.</h2>
+        </div>
         <div class="oneAttraction" th:each="attraction: ${session.attractions}">
 
             <div class="imageAttraction">
@@ -33,19 +36,21 @@
             <div class="contentAttraction">
 
                 <div class="nameAttraction"
-                     data-th-text="${attraction.attractionName}">
+                     data-th-text="@{${'Nazwa: '+ attraction.attractionName}}">
                 </div>
 
                 <div class="descriptionAttraction"
-                     data-th-text="${attraction.attractionDescription}">
+                     data-th-text="@{${'Opis: '+ attraction.attractionDescription}}">
                 </div>
 
                 <div class="cityAttraction"
-                     data-th-text="${attraction.attractionCity}">
+                     data-th-text="@{${'Lokalizacja'+ attraction.attractionCity}}">
                 </div>
 
                 <div class="showDetails">
-                    <a th:href="@{/place/getDetails/attraction/{id}(id=${attraction.id})}">Pokaż szczegóły</a>
+                    <a th:href="@{/place/getDetails/attraction/{id}(id=${attraction.id})}" style="color: black">
+                        <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż szczegoły -></button>
+                    </a>
                 </div>
             </div>
 

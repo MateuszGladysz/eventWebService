@@ -8,12 +8,14 @@ import application.model.Restaurant;
 import application.service.EventAndPlacesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Map;
 
@@ -48,7 +50,7 @@ public class WorkerController {
 
 
     @RequestMapping(value = {"/addEvent"}, method = RequestMethod.POST)
-    public String addEvent(Event event, @RequestParam("eventPhotoFile") MultipartFile eventPhoto, Map<String, Object> model) {
+    public String addEvent(@Valid Event event, BindingResult bindingResult, @RequestParam("eventPhotoFile") MultipartFile eventPhoto, Map<String, Object> model) {
 
 
         if (!eventPhoto.getOriginalFilename().contains(".jpg")) {

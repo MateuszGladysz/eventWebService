@@ -24,6 +24,9 @@
 
     <div class="container-fluid">
         <h1>Hotele</h1>
+        <div class="NoContent" th:if="${session.hotels.isEmpty()}">
+            <h2>Brak hoteli.</h2>
+        </div>
         <div class="oneHotel" th:each="hotel: ${session.hotels}">
 
             <div class="imageHotel">
@@ -33,19 +36,21 @@
             <div class="contentHotel">
 
                 <div class="nameHotel"
-                     data-th-text="${hotel.hotelName}">
+                     data-th-text="@{${'Nazwa: ' + hotel.hotelName}}">
                 </div>
 
                 <div class="descriptionHotel"
-                     data-th-text="${hotel.hotelDescription}">
+                     data-th-text="@{${'Opis: '+ hotel.hotelDescription}}">
                 </div>
 
                 <div class="cityHotel"
-                     data-th-text="${hotel.hotelCity}">
+                     data-th-text="@{${'Lokalizacja: '+ hotel.hotelCity}}">
                 </div>
 
                 <div class="showDetails">
-                    <a th:href="@{/place/getDetails/hotel/{id}(id=${hotel.id})}">Pokaż szczegóły</a>
+                    <a th:href="@{/place/getDetails/hotel/{id}(id=${hotel.id})}" style="color: black">
+                        <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż szczegoły -></button>
+                    </a>
                 </div>
             </div>
 

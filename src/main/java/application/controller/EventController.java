@@ -52,15 +52,27 @@ public class EventController {
         }
 
 
-        eventAndPlacesServ.buyTicket((UserAccount) session.getAttribute("loggedUser"),
+        String message = eventAndPlacesServ.buyTicket((UserAccount) session.getAttribute("loggedUser"),
                 eventId, ticketType, ticketAmount);
 
-        return "eventDetails";
+        if(message.equals("noTicketsForEvent")){
+            session.setAttribute("buyTicketFailureMessage", "Brak biletów na to wydarzenie");
+        }
+
+        return "redirect:/event/eventDetails/"+ eventId;
     }
 
     @RequestMapping(value="/addComment", method = RequestMethod.POST)
     public String addComment(@RequestParam String commentEventId, @RequestParam String commentContent,
-                             @RequestParam String rateInComment){
+                             @RequestParam String rateInComment, HttpServletRequest request){
+
+        if(session.getAttribute("loggedUser") == null) {
+
+            session.setAttribute("addCommentFailureMessage", "Musisz być zalogowany aby doadać komentarz");
+            session.setAttribute("previousPageUrl",request.getHeader("Referer"));
+            return "redirect:/login";
+
+        }
 
         Event event = (Event)eventAndPlacesServ.getOneEventById(Long.parseLong(commentEventId));
         UserAccount userAcc = (UserAccount) session.getAttribute("loggedUser");

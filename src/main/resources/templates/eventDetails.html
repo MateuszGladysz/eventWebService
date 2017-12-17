@@ -31,36 +31,48 @@
 
             <div class="contentEvent">
 
-                <div class="nameEvent">
-                    <h3 data-th-text="${event.eventName}"></h3>
+                <div class="nameEvent"
+                     data-th-text="${event.eventName}">
                 </div>
 
-                <div class="descriptionEvent">
-                    <h4  data-th-text="${event.eventDescription}"></h4>
+                <div class="descriptionEvent"
+                      data-th-text="${event.eventDescription}">
                 </div>
 
-                <div class="dateEvent">
-                    <h4  data-th-text="${event.eventDate}"></h4>
+                <div class="dateEvent" th:unless="${event.eventType} == 'festival'"
+                     data-th-text="@{${'Data: '+event.eventDate}}">
                 </div>
 
-                <div class="addressEvent">
-                    <h4  data-th-text="${event.eventAddress}"></h4>
+                <div class="dateEvent" th:if="${event.eventType} == 'festival'"
+                     data-th-text="@{${'Data rozpoczęcia: '+event.eventDate}}">
                 </div>
 
-                <div class="cityEvent">
-                    <h4  data-th-text="${event.eventCity}"></h4>
+                <div class="dateEvent" th:if="${event.eventType} == 'festival'"
+                      data-th-text="@{${'Data zakończenia: '+ event.endEventDate}}">
                 </div>
 
-                <div class="ticketEvent">
-                    <h4  data-th-text="${event.ticketAmount}"></h4>
+                <div class="addressEvent"
+                     data-th-text="@{${'Adres: ' + event.eventAddress}}">
                 </div>
 
-                <div class="ticketNormalPriceEvent">
-                    <h4  data-th-text="${event.ticketNormalPrice}"></h4>
+                <div class="cityEvent"
+                      data-th-text="@{${'Miasto: ' + event.eventCity}}">
                 </div>
 
-                <div class="ticketConcessionPriceEvent">
-                    <h4  data-th-text="${event.ticketConcessionPrice}"></h4>
+                <div class="ticketEvent"
+                      data-th-text="@{${'Ilość dostępnych biletów: ' + event.ticketAmount}}">
+                </div>
+
+                <div class="ticketNormalPriceEvent"
+                      data-th-text="@{${'Cena norlmalnych biletów: ' + event.ticketNormalPrice}+' zł'}">
+                </div>
+
+                <div class="ticketConcessionPriceEvent" th:if="${event.ticketConcessionPrice} != 0"
+                      data-th-text="@{${'Cena ulgowych biletów: ' + event.ticketConcessionPrice} + ' zł'}">
+                </div>
+
+                <div class="ticketConcessionPriceEvent" th:unless="${event.ticketConcessionPrice} != 0"
+                     data-th-text="@{${'Cena ulgowych biletów: brak'}}">
                 </div>
 
             </div>
@@ -96,14 +108,32 @@
 
                 </form>
             </div>
-            <div class="showRestaurants">
-                <a th:href="@{/restaurant/{city}(city=${event.eventCity})}">Pokaż restauracje</a>
+            <div class="showPlaces">
+                <a th:href="@{/restaurant/{city}(city=${event.eventCity})}" style="color: black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż restauracje</button>
+                </a>
             </div>
-            <div class="addComment" th:if="${session.loggedUser != null}">
+            <div class="showPlaces">
+                <a th:href="@{/hotel/{city}(city=${event.eventCity})}" style="color: black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż hotele</button>
+                </a>
+            </div>
+            <div class="showPlaces">
+                <a th:href="@{/attraction/{city}(city=${event.eventCity})}" style="color: black">
+                    <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż atrakcje</button>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="commentManage">
+
+            <div class="addComment"  th:each="event: ${session.eventDetails}">
                 <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data"
-                      action="../../event/addComment">
+                      th:action="@{/../../../event/addComment}">
                     <input type="hidden" id="commentEventId" name="commentEventId" th:value="${event.id}"></input>
                     <h2 class="form-signin-heading">Skomentuj to wydarzenie</h2>
+
                     <div class="addCommentContent">
 
                         <div class="addCommentContent1">
@@ -132,26 +162,28 @@
 
                 </form>
             </div>
+            <div class="allComments">
+                <h2>Komentarze użytkowników: </h2>
+                <div class="oneComment" th:each="comment: ${session.comments}">
 
+                    <div class="commentInfo">
+                        <div class="commentator"
+                             data-th-text="${comment.getUserAcc().getUserProf().getFirstName()}" >
+                        </div>
 
-
-            <div class="allComments" th:each="comment: ${session.comments}">
-
-                <div class="commentator"
-                     data-th-text="${comment.getUserAcc().getUserProf().getFirstName()}" >
+                        <div class="commentRate"
+                             data-th-text="@{${'Ocena użytkownika: '+comment.rateInComment}}" >
+                        </div>
+                    </div>
+                    <div class="commentContent"
+                         data-th-text="${comment.commentContent}">
+                    </div>
                 </div>
-
-                <div class="commentContent"
-                     data-th-text="${comment.commentContent}">
-                </div>
-
-                <div class="commentRate"
-                     data-th-text="${comment.rateInComment}" >
-                </div>
-
             </div>
 
+
         </div>
+
     </div>
     <div th:replace="footer :: footer">
     </div>

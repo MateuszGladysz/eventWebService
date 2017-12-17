@@ -1,4 +1,5 @@
 
+
 .container-fluid1{
 
     width: 1200px;
@@ -24,6 +25,7 @@
 .imageEvent{
 
     margin: 25px;
+    margin-left: 0px;
 }
 
 .contentEvent{
@@ -39,6 +41,7 @@
 .buyTicket{
 
     margin: 25px;
+    margin-left: 0px;
     height: 120px;
     width: 500px
 }
@@ -53,4 +56,158 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+}
+
+
+/* Css dotyczące informacji o evencie  */
+
+.nameEvent{
+
+    font-style:  italic;
+
+    font-weight: 800;
+
+    font-size: xx-large;
+
+    background-color:grey;
+    color: white;
+
+    padding: 15px;
+}
+
+.descriptionEvent{
+    font-style: normal;
+    font-weight: 600;
+    font-size: medium;
+    padding: 5px;
+    background-color: #edeeef;
+}
+
+.dateEvent{
+
+    font-weight: 600;
+    font-size: medium;
+    padding-top: 10px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+.addressEvent{
+
+    font-weight: 560;
+    font-size: medium;
+    font-family: initial;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+
+.cityEvent{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+
+.ticketEvent{
+    font-weight: 600;
+    font-family: serif;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+.ticketNormalPriceEvent{
+
+    font-weight: 600;
+    font-family: serif;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+.ticketConcessionPriceEvent{
+    font-weight: 600;
+    font-family: serif;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+
+/* Css dotyczące komentarzy */
+
+
+.commentManage{
+
+    display: flex;
+    flex-direction : row-reverse;
+    justify-content: space-between;
+}
+
+.allComments{
+    width: 500px;
+}
+
+.addComment{
+
+    width: 500px;
+}
+
+.addCommentContent{
+
+   display: flex;
+   flex-direction : row-reverse;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+.addCommentContent1{
+    width: 70px;
+}
+
+.addCommentContent2{
+    width: 400px;
+}
+
+.addCommentContent2 .form-control{
+    height: 80px !important;
+}
+
+.addCommentButton{
+
+    margin-top : 20px;
+}
+
+
+.oneComment{
+
+display: flex;
+flex-direction: column;
+margin-top: 15px;
+
+}
+.commentInfo{
+
+    display: flex;
+    justify-content: space-between;
+    background-color: #555;
+    color: white;
+}
+
+.commentContent{
+
+    border: 1px solid lightgrey;
+    padding: 10px;
+}
+
+.commentator{
+
+    margin: 5px;
+}
+
+.commentRate{
+
+    margin: 5px;
 }

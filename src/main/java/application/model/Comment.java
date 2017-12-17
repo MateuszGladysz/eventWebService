@@ -18,7 +18,7 @@ public class Comment {
     String commentContent;
 
     @NotNull
-    double rateInComment;
+    int rateInComment;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     public UserAccount userAcc;
@@ -38,7 +38,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(long id, String commentContent, double rateInComment, UserAccount userAcc, Event event, Hotel hotel, Restaurant restaurant, Attraction attraction) {
+    public Comment(long id, String commentContent, int rateInComment, UserAccount userAcc, Event event, Hotel hotel, Restaurant restaurant, Attraction attraction) {
         this.id = id;
         this.commentContent = commentContent;
         this.rateInComment = rateInComment;
@@ -89,7 +89,7 @@ public class Comment {
         this.commentContent = commentContent;
     }
 
-    public void setRateInComment(double rateInComment) {
+    public void setRateInComment(int rateInComment) {
         this.rateInComment = rateInComment;
     }
 

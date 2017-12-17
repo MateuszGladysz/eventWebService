@@ -126,25 +126,25 @@ public class EventAndPlacesService {
         if(event != null){
             List<Comment> eventComments = getAllCommentByTypeAndId(event.getId(),"event");
 
-            event.setEventRate((event.getEventRate()+Long.parseLong(rateInComment))/
+            event.setEventRate((eventComments.size()*event.getEventRate()+Long.parseLong(rateInComment))/
                     (eventComments.size()+1));
             eventRepo.save(event);
         }
         if(hotel != null){
             List<Comment> hotelComments = getAllCommentByTypeAndId(hotel.getId(),"hotel");
-            hotel.setHotelRate((hotel.getHotelRate()+Long.parseLong(rateInComment))/
+            hotel.setHotelRate((hotelComments.size()*hotel.getHotelRate()+Long.parseLong(rateInComment))/
                     (hotelComments.size()+1));
             hotelRepo.save(hotel);
         }
         if(restaurant != null){
             List<Comment> restaurantComments = getAllCommentByTypeAndId(restaurant.getId(),"restaurant");
-            restaurant.setRestaurantRate((restaurant.getRestaurantRate()+Long.parseLong(rateInComment))/
+            restaurant.setRestaurantRate((restaurantComments.size()*restaurant.getRestaurantRate()+Long.parseLong(rateInComment))/
                     (restaurantComments.size()+1));
             restaurantRepo.save(restaurant);
         }
         if(attraction != null){
             List<Comment> attractionComments = getAllCommentByTypeAndId(attraction.getId(),"attraction");
-            attraction.setAttractionRate((attraction.getAttractionRate()+Long.parseLong(rateInComment))/
+            attraction.setAttractionRate((attractionComments.size()*attraction.getAttractionRate()+Long.parseLong(rateInComment))/
                     (attractionComments.size()+1));
             attractionRepo.save(attraction);
         }
@@ -157,7 +157,7 @@ public class EventAndPlacesService {
         comment.setRestaurant(restaurant);
 
         comment.setCommentContent(commentContent);
-        comment.setRateInComment(Double.parseDouble(rateInComment));
+        comment.setRateInComment(Integer.parseInt(rateInComment));
 
         commentRepo.save(comment);
     }
@@ -191,23 +191,27 @@ public class EventAndPlacesService {
 
         Event event = getOneEventById(Long.parseLong(eventId));
 
+        if(event.getTicketAmount() == 0){
+            return "noTicketsForEvent";
+        }
+
         ticket.setEvent(event);
         ticket.setUserAcc(userAcc);
         ticket.setTicketAmount(Integer.parseInt(ticketAmount));
         ticket.setOwnerId(userAcc.getId());
         ticket.setTicketType(ticketType);
 
+        event.setTicketAmount(event.getTicketAmount()- Integer.parseInt(ticketAmount));
 
         if(ticketType.equals("normal")){
             oneTicketPrice = event.getTicketNormalPrice();
         }else oneTicketPrice = event.getTicketConcessionPrice();
 
 
-        System.out.println(oneTicketPrice * Long.parseLong(ticketAmount));
-
         ticket.setTicketPrice(oneTicketPrice * Long.parseLong(ticketAmount));
 
         ticketRepo.save(ticket);
+        eventRepo.save(event);
 
         return "";
     }

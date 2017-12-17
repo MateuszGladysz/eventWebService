@@ -22,7 +22,7 @@
 
 .imagePlace{
 
-    margin: 25px;
+margin: 20px 0;
 }
 
 .contentPlace{
@@ -33,4 +33,80 @@
     margin: 25px;
     height: 400px;
     width: 500px
+}
+
+/* Css dotyczące komentarzy */
+
+
+.commentManage{
+
+    display: flex;
+    flex-direction : row-reverse;
+    justify-content: space-between;
+}
+
+.allComments{
+    width: 500px;
+}
+
+.addComment{
+
+    width: 500px;
+}
+
+.addCommentContent{
+
+   display: flex;
+   flex-direction : row-reverse;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+.addCommentContent1{
+    width: 70px;
+}
+
+.addCommentContent2{
+    width: 400px;
+}
+
+.addCommentContent2 .form-control{
+    height: 80px !important;
+}
+
+.addCommentButton{
+
+    margin-top : 20px;
+}
+
+
+.oneComment{
+
+display: flex;
+flex-direction: column;
+margin-top: 15px;
+
+}
+.commentInfo{
+
+    display: flex;
+    justify-content: space-between;
+    background-color: #555;
+    color: white;
+}
+
+.commentContent{
+
+    border: 1px solid lightgrey;
+    padding: 10px;
+}
+
+.commentator{
+
+    margin: 5px;
+}
+
+.commentRate{
+
+    margin: 5px;
 }

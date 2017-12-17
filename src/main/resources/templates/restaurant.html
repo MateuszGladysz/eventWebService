@@ -24,6 +24,9 @@
 
     <div class="container-fluid">
         <h1>Restauracje</h1>
+        <div class="NoContent" th:if="${session.restaurants.isEmpty()}">
+            <h2>Brak restauracji.</h2>
+        </div>
         <div class="oneRestaurant" th:each="restaurant: ${session.restaurants}">
 
             <div class="imageRestaurant">
@@ -32,20 +35,22 @@
 
             <div class="contentRestaurant">
 
-                <div class="nameEvent"
-                     data-th-text="${restaurant.restaurantName}">
+                <div class="nameRestaurant"
+                     data-th-text="@{${'Nazwa: '+restaurant.restaurantName}}">
                 </div>
 
-                <div class="descriptionEvent"
-                      data-th-text="${restaurant.restaurantDescription}">
+                <div class="descriptionRestaurant"
+                      data-th-text="@{${'Opis: '+restaurant.restaurantDescription}}">
                 </div>
 
                 <div class="cityRestaurant"
-                      data-th-text="${restaurant.restaurantCity}">
+                      data-th-text="@{${'Lokalizacja: '+restaurant.restaurantCity}}">
                 </div>
 
                 <div class="showDetails">
-                    <a th:href="@{/place/getDetails/restaurant/{id}(id=${restaurant.id})}">Pokaż szczegóły</a>
+                    <a th:href="@{/place/getDetails/restaurant/{id}(id=${restaurant.id})}" style="color: black">
+                        <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż szczegoły -></button>
+                    </a>
                 </div>
             </div>
 

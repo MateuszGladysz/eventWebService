@@ -56,7 +56,7 @@ public class LoginController {
         if(message.equals("logged")){
             session.setAttribute("loggedUser", userAcc);
 
-            if(session.getAttribute("buyTicketFailureMessage") != null){
+            if(session.getAttribute("buyTicketFailureMessage") != null || session.getAttribute("addCommentFailureMessage") != null ){
 
                 return "redirect:" + session.getAttribute("previousPageUrl") ;
             }

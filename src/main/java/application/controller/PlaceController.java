@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 
 @Controller
@@ -51,10 +51,18 @@ public class PlaceController {
     }
 
     @RequestMapping(value="/addComment/{type}", method = RequestMethod.POST)
-    public String addComment(@PathVariable String type,@RequestParam String placeId, @RequestParam String commentContent,
-                             @RequestParam String rateInComment){
+    public String addComment(@PathVariable String type, @RequestParam String placeId, @RequestParam String commentContent,
+                             @RequestParam String rateInComment, HttpServletRequest request){
 
         UserAccount userAcc = (UserAccount) session.getAttribute("loggedUser");
+
+        if(userAcc == null) {
+
+            session.setAttribute("addCommentFailureMessage", "Musisz być zalogowany aby doadać komentarz");
+            session.setAttribute("previousPageUrl",request.getHeader("Referer"));
+            return "redirect:/login";
+
+        }
 
         if(type.equals("restaurant")){
             Restaurant restaurant = eventAndPlacesServ.getOneRestaurantById(Long.parseLong(placeId));

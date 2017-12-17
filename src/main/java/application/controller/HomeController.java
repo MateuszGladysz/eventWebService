@@ -59,7 +59,15 @@ public class HomeController {
     public String account() {return "account"; }
 
     @RequestMapping(value = "/workerPanel", method = {RequestMethod.GET})
-    public String workerPanel() {return "workerPanel"; }
+    public String workerPanel() {
+
+        UserAccount userAcc = (UserAccount)session.getAttribute("loggedUser");
+
+        if(userAcc != null && userAcc.getUserProf().getWorker() == true){
+            return "workerPanel";
+        }
+        return "home";
+    }
 
 
     @RequestMapping(value = "/restaurant/{city}", method = {RequestMethod.GET})
@@ -79,10 +87,11 @@ public class HomeController {
     public String hotel(@PathVariable String city) {
 
         if(!city.equals("noCity")){
-            session.setAttribute("hotels",eventAndPlacesServ.getAllRestaurantsByCity(city));
+            session.setAttribute("hotels",eventAndPlacesServ.getAllHotelsByCity(city));
         }else{
             session.setAttribute("hotels",eventAndPlacesServ.getAllHotels());
         }
+
         return "hotel";
     }
 

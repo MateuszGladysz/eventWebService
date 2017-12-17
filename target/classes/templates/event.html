@@ -23,7 +23,11 @@
 
 
         <div class="container-fluid">
-            <h1>Festivale</h1>
+            <h1>Wydarzenia</h1>
+
+            <div class="NoContent" th:if="${session.events.isEmpty()}">
+                <h2>Brak wydarzeń o danych paramterach</h2>
+            </div>
             <div class="oneEvent" th:each="event: ${session.events}">
 
                 <div class="imageEvent">
@@ -33,23 +37,25 @@
                 <div class="contentEvent">
 
                     <div class="nameEvent">
-                        <h3 data-th-text="${event.eventName}"></h3>
+                        <h3 data-th-text="@{${'Nazwa: '+event.eventName}}"></h3>
                     </div>
 
                     <div class="descriptionEvent">
-                        <h4  data-th-text="${event.eventDescription}"></h4>
+                        <h4  data-th-text="@{${'Opis: '+event.eventDescription}}"></h4>
                     </div>
 
                     <div class="dateEvent">
-                        <h4  data-th-text="${event.eventDate}"></h4>
+                        <h4  data-th-text="@{${'Data: '+event.eventDate}}"></h4>
                     </div>
 
                     <div class="cityEvent">
-                        <h4  data-th-text="${event.eventCity}"></h4>
+                        <h4  data-th-text="@{${'Lokalizacja: '+event.eventCity}}"></h4>
                     </div>
 
                     <div class="showDetails">
-                        <a th:href="@{/event/getDetails/{id}(id=${event.id})}">Pokaż szczegóły</a>
+                        <a th:href="@{/event/getDetails/{id}(id=${event.id})}" style="color: black">
+                            <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż szczegoły -></button>
+                        </a>
                     </div>
                 </div>
 
