@@ -8,7 +8,8 @@
 
 
     height: 400px;
-    width: 500px
+    width: 500px;
+     box-shadow: 30px 23px #888888;
 }
 
 .onePlace{
@@ -33,6 +34,109 @@ margin: 20px 0;
     margin: 25px;
     height: 400px;
     width: 500px
+}
+
+/* Css dotyczące informacji o miejscu */
+
+.namePlace{
+     font-style:  italic;
+
+    font-weight: 800;
+
+    font-size: xx-large;
+
+    background-color:grey;
+    color: white;
+
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+.descriptionPlace{
+    font-style: normal;
+    font-weight: 600;
+    font-size: medium;
+    padding: 5px;
+    background-color: #edeeef;
+}
+
+.addressPlace{
+
+    font-weight: 560;
+    font-size: medium;
+    font-family: initial;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+
+}
+
+.cityPlace{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+}
+
+.ratePlace{
+
+padding-top: 5px;
+
+padding-right: 5px;
+
+font-weight: 560;
+
+font-size: medium;
+
+background-color: gray;
+
+color: white;
+
+text-align:  right;
+}
+
+.hotelPriceForOne{
+
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+
+}
+
+.hotelPriceForTwo{
+
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+
+}
+
+.hotelPriceForMore{
+
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #edeeef;
+
+}
+
+.attractionPriceList{
+
+     font-weight: 560;
+        font-family: initial;
+        font-size: medium;
+        padding-top: 5px;
+        padding-left: 5px;
+        background-color: #edeeef;
 }
 
 /* Css dotyczące komentarzy */

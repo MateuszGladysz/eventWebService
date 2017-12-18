@@ -118,6 +118,9 @@ public class HomeController {
     public String myTickets() {
 
         UserAccount userAcc = (UserAccount) session.getAttribute("loggedUser");
+        if(userAcc == null){
+            return "home";
+        }
         session.setAttribute("userTickets",ticketsServ.getTicketByOwnerId(userAcc.getId()));
         return "myTickets";
 

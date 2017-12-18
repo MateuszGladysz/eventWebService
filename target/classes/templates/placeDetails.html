@@ -42,15 +42,19 @@
                 </div>
 
                 <div class="addressPlace"
-                      data-th-text="${place.restaurantAddress}">
+                      data-th-text="@{${'Adres: '+place.restaurantAddress}}">
                 </div>
 
                 <div class="cityPlace"
-                      data-th-text="${place.restaurantCity}">
+                      data-th-text="@{${'Miasto: '+place.restaurantCity}}">
                 </div>
 
-                <div class="ratePlace"
-                     data-th-text="${place.restaurantRate}">
+                <div class="ratePlace" th:if="${place.restaurantRate} != 0"
+                     data-th-text="@{${'Średnia ocena użytkowników: '+place.restaurantRate}}">
+                </div>
+
+                <div class="ratePlace" th:unless="${place.restaurantRate} != 0"
+                     data-th-text="@{${'Średnia ocena użytkowników: jeszcze nikt nie ocenił'}}">
                 </div>
 
             </div>
@@ -76,27 +80,31 @@
                 </div>
 
                 <div class="addressPlace"
-                     data-th-text="${place.hotelAddress}">
+                     data-th-text="@{${'Adres: '+place.hotelAddress}}">
                 </div>
 
                 <div class="cityPlace"
-                     data-th-text="${place.hotelCity}">
-                </div>
-
-                <div class="ratePlace"
-                     data-th-text="${place.hotelRate}">
+                     data-th-text="@{${'Miasto: '+place.hotelCity}}">
                 </div>
 
                 <div class="hotelPriceForOne"
-                     data-th-text="${place.hotelMinRoomForOnePrice}">
+                     data-th-text="@{${'Minimalna cena za 1-os pokój: '+place.hotelMinRoomForOnePrice}}">
                 </div>
 
                 <div class="hotelPriceForTwo"
-                     data-th-text="${place.hotelMinRoomForTwoPrice}">
+                     data-th-text="@{${'Minimalna cena za 2-os pokój: '+place.hotelMinRoomForTwoPrice}}">
                 </div>
 
                 <div class="hotelPriceForMore"
-                     data-th-text="${place.hotelMinRoomForMorePrice}">
+                     data-th-text="@{${'Minimalna cena za wiecej niż 2-os pokój: '+place.hotelMinRoomForMorePrice}}">
+                </div>
+
+                <div class="ratePlace" th:if="${place.hotelRate} != 0"
+                     data-th-text="@{${'Średnia ocena użytkowników: '+place.hotelRate}}">
+                </div>
+
+                <div class="ratePlace" th:unless="${place.hotelRate} != 0"
+                     data-th-text="@{${'Średnia ocena użytkowników: jeszcze nikt nie ocenił'}}">
                 </div>
 
             </div>
@@ -120,20 +128,25 @@
                 </div>
 
                 <div class="addressPlace"
-                     data-th-text="${place.attractionAddress}">
+                     data-th-text="@{${'Adres: '+place.attractionAddress}}">
                 </div>
 
                 <div class="cityPlace"
-                     data-th-text="${place.attractionCity}">
-                </div>
-
-                <div class="ratePlace"
-                     data-th-text="${place.attractionRate}">
+                     data-th-text="@{${'Miasto: '+place.attractionCity}}">
                 </div>
 
                 <div class="attractionPriceList"
-                     data-th-text="${place.attractionPriceList}">
+                     data-th-text="@{${'Cennik: '+place.attractionPriceList}}">
                 </div>
+
+                <div class="ratePlace" th:if="${place.attractionRate} != 0"
+                     data-th-text="@{${'Średnia ocena użytkowników: '+place.attractionRate}}">
+                </div>
+
+                <div class="ratePlace" th:unless="${place.attractionRate} != 0"
+                     data-th-text="@{${'Średnia ocena użytkowników: jeszcze nikt nie ocenił'}}">
+                </div>
+
             </div>
 
         </div>

@@ -58,7 +58,7 @@ public class PlaceController {
 
         if(userAcc == null) {
 
-            session.setAttribute("addCommentFailureMessage", "Musisz być zalogowany aby doadać komentarz");
+            session.setAttribute("addCommentFailureMessage", "Musisz być zalogowany aby dodać komentarz");
             session.setAttribute("previousPageUrl",request.getHeader("Referer"));
             return "redirect:/login";
 

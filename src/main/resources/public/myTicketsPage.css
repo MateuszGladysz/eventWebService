@@ -5,10 +5,9 @@
     display: flex;
     flex-direction: row;
 
+    border: 1px solid grey;
+
 }
-
-
-
 
 .imageTicket{
 
@@ -19,6 +18,11 @@
 
 }
 
+.image{
+
+box-shadow: 25px 15px #888888;
+}
+
 .innerTicket{
 
     display:flex;
@@ -26,10 +30,15 @@
 }
 .infoTicket{
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 10px;
+display: flex;
+
+flex-direction: column;
+
+justify-content: space-between;
+
+margin: 10px;
+
+margin-top: 5px;
 }
 
 .dataTicket{
@@ -38,5 +47,132 @@
     padding-right: 10px;
     margin: 10px;
     margin-left: 0px;
+    margin-top: 0px;
 
+
+}
+
+.idTicket{
+
+    font-weight: 500;
+    font-size: large;
+    background-color:grey;
+    color: white;
+    padding: 5px;
+
+}
+
+.typeTicket{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+
+}
+
+.oneTicketPrice{
+
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid grey;
+
+}
+.amountTicket{
+
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+
+}
+
+.allTicketPrice{
+
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+
+
+}
+
+.notice{
+
+   font-weight: 500;
+    font-size: large;
+    background-color:grey;
+    color: white;
+    padding: 8px;
+    margin-bottom: 0px;
+}
+
+.nameEvent{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+}
+
+.dateEvent{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+}
+.addressEvent{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid grey;
+}
+.cityEvent{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+}
+
+.nameOwner{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+}
+
+.phoneOwner{
+    font-weight: 560;
+    font-family: initial;
+    font-size: medium;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+}
+
+.placesButtons{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
 }

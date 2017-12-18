@@ -9,7 +9,8 @@
 
     display: flex;
     justify-content: space-between;
-    position: realative;
+     margin-bottom: 30px;
+
 }
 
 .imageEvent{

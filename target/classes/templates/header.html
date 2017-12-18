@@ -34,7 +34,7 @@
         <ul class="nav navbar-nav navbar-right">
 
             <li th:if ="${session.loggedUser} != null">
-                <a href=""><span class="glyphicon glyphicon-heart-empty" style="color: white">.Witaj-<span data-th-text="${session.loggedUser.getUserProf().getFirstName()}"></span></span></a>
+                <a href=""><span class="glyphicon glyphicon-heart-empty" style="color: white" data-th-text="@{${'`Witaj:'+session.loggedUser.getUserProf().getFirstName()}}"></span></a>
             </li>
 
             <li th:if ="${session.loggedUser} != null"><a href="/myTickets"><span class="glyphicon glyphicon-modal-window"></span> Moje bilety</a></li>

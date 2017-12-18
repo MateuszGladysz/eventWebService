@@ -59,7 +59,7 @@ public class EventController {
             session.setAttribute("buyTicketFailureMessage", "Brak biletów na to wydarzenie");
         }
 
-        return "redirect:/event/eventDetails/"+ eventId;
+        return "redirect:/event/getDetails/"+ eventId;
     }
 
     @RequestMapping(value="/addComment", method = RequestMethod.POST)
@@ -68,7 +68,7 @@ public class EventController {
 
         if(session.getAttribute("loggedUser") == null) {
 
-            session.setAttribute("addCommentFailureMessage", "Musisz być zalogowany aby doadać komentarz");
+            session.setAttribute("addCommentFailureMessage", "Musisz być zalogowany aby dodać komentarz");
             session.setAttribute("previousPageUrl",request.getHeader("Referer"));
             return "redirect:/login";
 
@@ -80,7 +80,7 @@ public class EventController {
                 rateInComment,commentContent);
 
 
-        return "eventDetails";
+        return "redirect:/event/getDetails/"+ commentEventId;
     }
 
 

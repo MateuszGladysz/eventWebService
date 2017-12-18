@@ -1,3 +1,7 @@
+body{
+        background-color: #f7f7f7 !important;
+}
+
 .imageSlider{
         width:100%;
 }
@@ -25,4 +29,92 @@
 
         margin-bottom: 400px;
         margin-top: 100px;
+}
+
+.homeContent{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 20px 100px;
+}
+.aboutUs{
+
+        margin-bottom: 20px;
+        width: 800px;
+        background-color: lightgrey;
+
+}
+
+.headaboutUs{
+
+        background-color: grey;
+        padding: 10px;
+        color: white;
+        font-size: xx-large;
+        font-family: cursive;
+
+}
+
+.eventHelpDescription{
+
+        padding: 10px;
+        font-size: large;
+        color: black;
+}
+
+.ourStationPoints{
+
+        display: flex;
+        justify-content: center;
+        width: 800px;
+        flex-wrap: wrap;
+}
+
+
+.point{
+
+        margin-top: 15px;
+        width: 200px;
+        margin-left: 15px;
+        margin-right: 15px;
+
+}
+
+.pointDescription{
+
+        width: 200px;
+        margin: 0;
+}
+.pointMap{
+
+        width: 200px;
+        heigth: 100px;
+}
+
+.pointName{
+
+        background-color: grey;
+        padding: 10px;
+        color: white;
+        font-size: large;
+        font-family: cursive;
+        width: 200px;
+}
+
+.openHours{
+
+        background-color: lightgrey;
+        width: 200px;
+        padding: 15px;
+        font-size: medium;
+}
+
+.headOurPoints{
+
+        background-color: grey;
+        padding: 10px;
+        color: white;
+        font-size: x-large;
+        font-family: cursive;
 }

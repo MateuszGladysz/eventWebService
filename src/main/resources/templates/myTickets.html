@@ -25,7 +25,10 @@
     <div class="container-fluid">
         <h1>Twoje bilety</h1>
 
-
+            <div class="NoContent" th:if="${session.userTickets.isEmpty()}">
+                <h2>Nie posiadasz żadnych biletów.</h2>
+                <h3>Zapraszamy do zapozniania się z ofertą wydarzeń kulturalnych.</h3>
+            </div>
             <div class="oneTicket" th:each="ticket: ${session.userTickets}">
 
                 <div class="innerTicket">
@@ -46,10 +49,10 @@
                              data-th-text="@{Typ biletu: Ulgowy }">
                         </div>
                         <div th:if ="${ticket.ticketType} == 'normal'" class="oneTicketPrice"
-                             data-th-text="@{${'Cena pojedynczego: ' +ticket.getEvent().getTicketNormalPrice()}}">
+                             data-th-text="@{${'Cena pojedynczego: ' +ticket.getEvent().getTicketNormalPrice()+'zł'}}">
                         </div>
                         <div th:unless ="${ticket.ticketType} == 'normal'" class="oneTicketPrice"
-                             data-th-text="@{${'Cena pojedynczego: ' +ticket.getEvent().getTicketConcessionPrice()}}">
+                             data-th-text="@{${'Cena pojedynczego: ' +ticket.getEvent().getTicketConcessionPrice()+'zł'}}">
                         </div>
 
                         <div class="amountTicket"
@@ -57,10 +60,9 @@
                         </div>
 
                         <div class="allTicketPrice"
-                             data-th-text="@{${'Całkowita cena: ' +ticket.ticketPrice}}">
+                             data-th-text="@{${'Całkowita cena: ' +ticket.ticketPrice}+'zł'}">
                         </div>
 
-                        <a th:href="@{/restaurant/{city}(city=${ticket.getEvent().getEventCity()})}">Restauracje</a>
                     </div>
                 </div>
 
@@ -69,13 +71,13 @@
 
                     <div class="eventTicket">
 
-                        <h3>Dane wydarzenia:</h3>
+                        <h4 class="notice">Dane wydarzenia:</h4>
                         <div class="nameEvent"
                              data-th-text="${ticket.getEvent().getEventName()}">
                         </div>
 
                         <div class="dateEvent"
-                              data-th-text="@{${'Data:' +  ticket.getEvent().getEventDate()}}">
+                              data-th-text="@{${'Data: ' +  ticket.getEvent().getEventDate()}}">
                         </div>
 
                         <div class="addressEvent"
@@ -90,7 +92,7 @@
 
                     <div class="eventOwner">
 
-                        <h3>Dane posiadacza: </h3>
+                        <h4 class="notice">Dane posiadacza: </h4>
                         <div class="nameOwner"
                              data-th-text="@{${ticket.getUserAcc().getUserProf().getFirstName()}
                                     + ' ' + ${ticket.getUserAcc().getUserProf().getLastName()}} ">
@@ -103,7 +105,23 @@
                     </div>
 
                 </div>
-
+                <div class="placesButtons">
+                    <div class="showPlaces">
+                        <a th:href="@{/restaurant/{city}(city=${ticket.getEvent().getEventCity()})}" style="color: black">
+                            <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż restauracje</button>
+                        </a>
+                    </div>
+                    <div class="showPlaces">
+                        <a th:href="@{/hotel/{city}(city=${ticket.getEvent().getEventCity()})}" style="color: black">
+                            <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż hotele</button>
+                        </a>
+                    </div>
+                    <div class="showPlaces">
+                        <a th:href="@{/attraction/{city}(city=${ticket.getEvent().getEventCity()})}" style="color: black">
+                            <button class="btn btn-lg btn-dark btn-block" type="button">Pokaż atrakcje</button>
+                        </a>
+                    </div>
+                </div>
 
             </div>
 

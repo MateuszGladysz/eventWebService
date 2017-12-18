@@ -42,7 +42,6 @@ public class RegistrationController {
     HttpServletRequest request) {
 
 
-        System.out.println("imie " + userProf.getFirstName());
         model.put("isMail","");
         model.put("registerMessage","");
         userAcc.setUserProf(userProf);
@@ -58,7 +57,10 @@ public class RegistrationController {
             String message;
             message = userAccountServ.addUser(userAcc, request.getParameter("password1"));
 
-            if(message.equals("registrationGood")) return "redirect:/";
+            if(message.equals("registrationGood")){
+                session.setAttribute("registerGoodMessage", "Rejestracja przebiegła pomyślnie, Witamy.");
+                return "redirect:/login";
+            }
 
             if(message.equals("noMatchPasswords")){
                 model.put("registerMessage", "Błędne powtórzenie hasła");
