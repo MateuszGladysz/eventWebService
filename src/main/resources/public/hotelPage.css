@@ -2,7 +2,9 @@
 
 
     height: 300px;
-    width: 400px
+    width: 400px;
+    border-bottom-right-radius:  50% 20%;
+    border-top-left-radius:  50% 20%;
 }
 
 .oneHotel{

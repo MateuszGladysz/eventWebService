@@ -6,10 +6,11 @@
 
 .image{
 
+height: 400px;
 
-    height: 400px;
-    width: 500px;
-     box-shadow: 30px 23px #888888;
+width: 500px;
+
+box-shadow: 8px 8px 7px #888888;
 }
 
 .onePlace{
@@ -50,6 +51,7 @@ margin: 20px 0;
 
     padding-bottom: 10px;
     padding-left: 5px;
+    box-shadow: 8px 8px 7px #888888;
 }
 .descriptionPlace{
     font-style: normal;
@@ -57,6 +59,7 @@ margin: 20px 0;
     font-size: medium;
     padding: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .addressPlace{
@@ -67,6 +70,7 @@ margin: 20px 0;
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 
 }
 
@@ -77,6 +81,7 @@ margin: 20px 0;
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .ratePlace{
@@ -94,6 +99,7 @@ background-color: gray;
 color: white;
 
 text-align:  right;
+box-shadow: 8px 8px 7px #888888;
 }
 
 .hotelPriceForOne{
@@ -104,6 +110,7 @@ text-align:  right;
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 
 }
 
@@ -115,6 +122,7 @@ text-align:  right;
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 
 }
 
@@ -126,6 +134,7 @@ text-align:  right;
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 
 }
 
@@ -137,6 +146,7 @@ text-align:  right;
         padding-top: 5px;
         padding-left: 5px;
         background-color: #edeeef;
+        box-shadow: 8px 8px 7px #888888;
 }
 
 /* Css dotyczące komentarzy */

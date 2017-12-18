@@ -40,20 +40,28 @@ body{
 }
 .aboutUs{
 
-        margin-bottom: 20px;
-        width: 800px;
-        background-color: lightgrey;
+margin-bottom: 20px;
 
+width: 800px;
+
+background-color: lightgrey;
+
+border-bottom-right-radius: 50% 10%;
 }
 
 .headaboutUs{
 
-        background-color: grey;
-        padding: 10px;
-        color: white;
-        font-size: xx-large;
-        font-family: cursive;
+background-color: grey;
 
+padding: 10px;
+
+color: white;
+
+font-size: xx-large;
+
+font-family: cursive;
+
+border-bottom-right-radius:  50% 20%;
 }
 
 .eventHelpDescription{
@@ -112,9 +120,15 @@ body{
 
 .headOurPoints{
 
-        background-color: grey;
-        padding: 10px;
-        color: white;
-        font-size: x-large;
-        font-family: cursive;
+background-color: grey;
+
+padding: 10px;
+
+color: white;
+
+font-size: x-large;
+
+font-family: cursive;
+
+border-bottom-right-radius: 50% 30%;
 }

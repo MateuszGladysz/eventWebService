@@ -11,7 +11,7 @@
 
     height: 400px;
     width: 500px;
-    box-shadow: 30px 23px #888888;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .oneEvent{
@@ -37,7 +37,9 @@
     align-self: left;
     margin: 25px;
     height: 400px;
-    width: 500px
+    width: 500px;
+
+
 }
 
 .buyTicket{
@@ -67,14 +69,15 @@
 
     font-style:  italic;
 
-                      font-weight: 800;
+    font-weight: 800;
 
-                      font-size: xx-large;
+    font-size: xx-large;
 
-                      background-color:grey;
-                      color: white;
+    background-color:grey;
+    color: white;
 
-                      padding: 15px;
+    padding: 15px;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .descriptionEvent{
@@ -83,6 +86,7 @@
     font-size: medium;
     padding: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .dateEvent{
@@ -92,6 +96,7 @@
     padding-top: 10px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 .addressEvent{
 
@@ -101,6 +106,7 @@
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .cityEvent{
@@ -110,6 +116,7 @@
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 
 .ticketEvent{
@@ -119,6 +126,7 @@
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 .ticketNormalPriceEvent{
 
@@ -128,6 +136,7 @@
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
 }
 .ticketConcessionPriceEvent{
     font-weight: 600;
@@ -136,6 +145,25 @@
     padding-top: 5px;
     padding-left: 5px;
     background-color: #edeeef;
+    box-shadow: 8px 8px 7px #888888;
+}
+
+.rateEvent{
+
+padding-top: 5px;
+
+padding-right: 5px;
+
+font-weight: 560;
+
+font-size: medium;
+
+background-color: gray;
+
+color: white;
+
+text-align:  right;
+box-shadow: 8px 8px 7px #888888;
 }
 
 /* Css dotyczące komentarzy */
