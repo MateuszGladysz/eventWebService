@@ -11,8 +11,9 @@ import java.util.List;
 @Transactional
 public interface TicketRepository extends CrudRepository<Ticket, Long>{
 
-    List<Ticket> findAllByOwnerId(long ownerId);
 
+    List<Ticket> findAllByOwnerId(long ownerId);
+    List<Ticket> findAll();
 
 
 }

@@ -19,4 +19,7 @@ public class TicketsService {
     TicketRepository ticketRepo;
 
     public List<Ticket> getTicketByOwnerId(long ownerId){return ticketRepo.findAllByOwnerId(ownerId);}
+
+    public List<Ticket> getAllTickets(){return ticketRepo.findAll();}
+
 }

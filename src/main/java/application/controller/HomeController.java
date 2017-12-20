@@ -121,7 +121,12 @@ public class HomeController {
         if(userAcc == null){
             return "home";
         }
-        session.setAttribute("userTickets",ticketsServ.getTicketByOwnerId(userAcc.getId()));
+        if(userAcc.getUserProf().getWorker()){
+            session.setAttribute("userTickets",ticketsServ.getAllTickets());
+        }else{
+            session.setAttribute("userTickets",ticketsServ.getTicketByOwnerId(userAcc.getId()));
+        }
+
         return "myTickets";
 
     }

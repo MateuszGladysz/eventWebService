@@ -34,10 +34,12 @@
         <ul class="nav navbar-nav navbar-right">
 
             <li th:if ="${session.loggedUser} != null">
+                <li  th:if="${session.loggedUser.getUserProf().getWorker()} == false"><a href="/myTickets"><span class="glyphicon glyphicon-modal-window"></span> Moje bilety</a></li>
+            </li>
+            <li th:if ="${session.loggedUser} != null">
                 <a href=""><span class="glyphicon glyphicon-heart-empty" style="color: white" data-th-text="@{${'`Witaj:'+session.loggedUser.getUserProf().getFirstName()}}"></span></a>
             </li>
 
-            <li th:if ="${session.loggedUser} != null"><a href="/myTickets"><span class="glyphicon glyphicon-modal-window"></span> Moje bilety</a></li>
 
             <li th:if ="${session.loggedUser} != null"><a href="/account"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
             <li th:unless ="${session.loggedUser}  != null"><a href="/registry"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>
