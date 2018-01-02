@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Service
@@ -126,6 +128,16 @@ public class UserAccountService {
         } else {
             return false;
         }
+
+    }
+
+    public boolean isText(String name){
+
+        String template = "[A-ZĄĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+";
+        CharSequence nameSeq = name;
+        Pattern pattern = Pattern.compile(template, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(nameSeq);
+        return matcher.matches();
 
     }
 

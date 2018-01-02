@@ -51,7 +51,12 @@ public class RegistrationController {
             model.put("isMail","Konto dla podanego e-maila już istnieje");
             return "/registry";
 
-        } else {
+        }
+        if(!userAccountServ.isText(userAcc.getUserProf().getFirstName())
+                || !userAccountServ.isText(userAcc.getUserProf().getLastName())){
+            model.put("isText", "Imię oraz Nazwisko powinno zawierać wyłącznie litery");
+            return "/registry";
+        } else{
 
 
             String message;

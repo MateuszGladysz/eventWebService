@@ -40,7 +40,7 @@
             <li th:if ="${session.loggedUser} != null">
                 <li  th:if="${session.loggedUser.getUserProf().getWorker()} == false"><a href="/myTickets"><span class="glyphicon glyphicon-modal-window"></span> Moje bilety</a></li>
             </li>
-            
+
             <li th:if ="${session.loggedUser} != null"><a href="/account"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
             <li th:unless ="${session.loggedUser}  != null"><a href="/registry"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>
             <li th:if ="${session.loggedUser} != null"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
