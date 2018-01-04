@@ -101,7 +101,10 @@ public class UserAccountService {
                 userAccountRepo.save(userAcc);
                 return "registrationGood";
 
-            } else return "noMatchPasswords";
+            }if(passwordChangeValidation(userAcc.getPassword()
+                , passwordToCheck).equals("toShortPasswords")) {
+                return "badSizePassword";
+        } else return "noMatchPasswords";
 
     }
 

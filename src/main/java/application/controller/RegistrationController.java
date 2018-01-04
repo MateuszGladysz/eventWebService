@@ -48,7 +48,7 @@ public class RegistrationController {
 
         if (userAccountServ.isMailUsed(userAcc) == true) {
 
-            model.put("isMail","Konto dla podanego e-maila już istnieje");
+            model.put("isMail","Konto dla adresu: "+ userAcc.getEmail() + " już istnieje");
             return "/registry";
 
         }
@@ -69,6 +69,10 @@ public class RegistrationController {
 
             if(message.equals("noMatchPasswords")){
                 model.put("registerMessage", "Błędne powtórzenie hasła");
+                return "/registry";
+            }
+            if(message.equals("badSizePassword")){
+                model.put("registerMessage", "Nieprawidłowy rozmiar hasła(wymagane od 5 do 15 znaków)");
                 return "/registry";
             }
 
