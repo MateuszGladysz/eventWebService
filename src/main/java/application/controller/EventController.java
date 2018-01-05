@@ -57,9 +57,11 @@ public class EventController {
 
         if(message.equals("noTicketsForEvent")){
             session.setAttribute("buyTicketFailureMessage", "Brak biletów na to wydarzenie");
-        }
+            return "redirect:/event/getDetails/"+ eventId;
+        }else return "redirect:/myTickets";
 
-        return "redirect:/event/getDetails/"+ eventId;
+
+
     }
 
     @RequestMapping(value="/addComment", method = RequestMethod.POST)
